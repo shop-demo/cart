@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\productsController;
 use App\Http\Controllers\Admin\customesController;
 use App\Http\Controllers\Admin\rolesController;
 use App\Http\Controllers\Ajax\seachController;
+use App\Http\Controllers\Frontend\homeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,3 +119,9 @@ Route::get('/error',[adminController::class,'error'])->name('error');
 Route::get('/admin',[adminController::class,'dashboard'])->name('dashboard');
 Route::post('/adminlogin',[adminController::class,'login'])->name('dashboardLogin');
 Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLogout');
+
+
+
+/*FRONTEND--------
+------------------*/
+Route::get('/home', [homeController::class,'index'])->name('home.index'); 

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.p-img{
+	border: 5px solid #eee;
+
+}
+.p-productDetil{
+	background: #ccc;
+}
+.product_detail_btm h4 a{
+	color: #333;
+}
+.o-price{
+	color: #333;
+}
+.n-price{
+	color: #333;
+}
+.s-star{
+	color: #333;
+}

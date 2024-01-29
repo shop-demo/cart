@@ -119,9 +119,13 @@
                   </div>
                   <div class="col-sm-10">
                     @php $imgs = json_decode($dataProduct->album_image) @endphp
+                    @if(is_array($imgs))
                     @foreach($imgs as $key=>$img)
                     <span ><img src="{{url('public/uploads')}}/Products/{{$img}}" style="display: inline-block; width: 10%;height:auto;"></span>
                     @endforeach
+                    @else
+                     <span ><img src="{{url('public/uploads')}}/Products/{{$dataProduct->album_image}}" style="display: inline-block; width: 10%;height:auto;"></span>
+                    @endif
                   </div>
                   <!-- The Modal albums -->
                   <div class="modal" id="Modal_albums">
@@ -189,6 +193,48 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                   </div>
+                   <!--   số lượng  --> 
+                  <div class="col-sm-2 pt-2">
+                    <p class="fw-bold">Số lượng</p>
+                  </div>
+                   <div class="col-sm-4 pt-2">  
+                    <input type="text" class="form-control" name="quantity" value="{{old('quantity') ?? $dataProduct->quantity }}" placeholder="Ô nhập dữ liệu" >
+                   @error('quantity')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                  </div>
+                <!--  end số lượng  -->
+
+                <!--  sản phẩm nổi bât --> 
+                <div class="row mb-5">
+                  <div class="col-sm-2" style="margin-top:2rem!important;">
+                    <p class="fw-bold">Sản phẩm Nổi bật</p>
+                  </div>
+                  <div class="col-sm-4"  style="margin-top:2rem!important;">  
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="product_new" id="gridCheck1" value= "1" {{ old('product_new')== 1 || $dataProduct->product_new == 1 ? 'checked' : false }}>
+                      <label class="form-check-label" for="gridCheck1">
+                        Sản Phẩm mới
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-4"  style="margin-top:2rem!important;">  
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck3" name="gia_tot" value="1" {{ old('gia_tot')== 1 || $dataProduct->gia_tot == 1 ? 'checked' : false }}>
+                      <label class="form-check-label" for="gridCheck3">
+                        Giá tốt
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck4" name="ban_chay_nhat" value="1" {{ old('ban_chay_nhat')== 1 || $dataProduct->ban_chay_nhat == 1 ? 'checked' : false }}>
+                      <label class="form-check-label" for="gridCheck4">
+                        Sản phẩm bán chạy nhất
+                      </label>
+                    </div>
+                  </div>
+                  
+                </div>
+               <!--  end sản phẩm nổi bât --> 
                   
                 </div>
                 
@@ -228,7 +274,6 @@
                        
                   </div>
                 </div>
-
 
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Submit Button</label>

@@ -38,22 +38,27 @@ class productsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     id`, `name`, `code`, `avatar`, `album_image`, `price`, `sale`, `description`, `product_details`, `category_id`, `created_at`, `updated_at`, `product_new`, `quantity`, `ban_chay_nhat`, `gia_tot`, `status
      */
     public function store(storeProductReq $request)
     {
+        
         $insetProducts = new productsModel;
         $insetProducts->name = $request->name;
         $insetProducts->code = Tieu_de($request->name);
         $insetProducts->avatar = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->avatar);
         $insetProducts->album_image = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->album_image);  
        
-        $insetProducts->description = $request->description;
+        $insetProducts->description     = $request->description;
         $insetProducts->product_details = $request->product_details;
-        $insetProducts->price = $request->price;
-        $insetProducts->sale = $request->sale;
-        $insetProducts->sale = $request->sale;
-        $insetProducts->category_id = $request->category_id;
-        $insetProducts->status = $request->status;
+        $insetProducts->price           = $request->price;
+        $insetProducts->sale            = $request->sale;
+        $insetProducts->product_new     = $request->product_new;
+        $insetProducts->quantity        = $request->quantity;
+        $insetProducts->ban_chay_nhat   = $request->ban_chay_nhat;
+         $insetProducts->gia_tot        = $request->gia_tot;
+        $insetProducts->category_id     = $request->category_id;
+        $insetProducts->status          = $request->status;
         $insetProducts->save();
 
         return redirect()->route('admin.productList')->with('success','Thêm dữ liệu thành công'); 
@@ -80,17 +85,22 @@ class productsController extends Controller
      */
     public function update(showProductReq $request,$id)
     {
+
         $upProducts = productsModel::find($id);
+
         $upProducts->name = $request->name;
         $upProducts->code = Tieu_de($request->name);
         $upProducts->avatar = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->avatar);
         $upProducts->album_image = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->album_image);  
        
-        $upProducts->description = $request->description;
+        $upProducts->description     = $request->description;
         $upProducts->product_details = $request->product_details;
-        $upProducts->price = $request->price;
-        $upProducts->sale = $request->sale;
-        $upProducts->sale = $request->sale;
+        $upProducts->price           = $request->price;
+        $upProducts->sale            = $request->sale;
+        $upProducts->product_new     = $request->product_new;
+        $upProducts->quantity        = $request->quantity;
+        $upProducts->ban_chay_nhat   = $request->ban_chay_nhat;
+        $upProducts->gia_tot         = $request->gia_tot;
         $upProducts->category_id = $request->category_id;
         $upProducts->status = $request->status;
         $upProducts->save();
