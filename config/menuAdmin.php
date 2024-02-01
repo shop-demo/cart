@@ -59,7 +59,7 @@
 							]
 						],
 
-						
+						//Role
 						[
 							'name'=>'Roles',
 							'route'=>'admin.roleList',
@@ -69,6 +69,20 @@
 									],
 									['name'=>'Add Role',
 									 'route'=>'admin.roleAdd',	
+									]								
+
+							]
+						],
+						//Tabs
+						[
+							'name'=>'Tabs',
+							'route'=>'admin.tabsList',
+							'items'=>[
+									['name'=>'List Tabs',
+									 'route'=>'admin.tabsList',	
+									],
+									['name'=>'Add Tabs',
+									 'route'=>'admin.tabsAdd',	
 									]								
 
 							]

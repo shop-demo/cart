@@ -8,6 +8,7 @@ use App\Models\Admin\categoryModel;
 use App\Models\Admin\productsModel;
 use App\Models\Admin\customesModel;
 use App\Models\Admin\rolesModel;
+use App\Models\Admin\tabsModel;
 use Illuminate\Http\Request;
 
 class activeController extends Controller
@@ -119,6 +120,27 @@ class activeController extends Controller
         return redirect()->route('admin.roleList')->with('success',' Trạng thái cập nhật thành công');
 
     }
+
+    //Tabs
+    public function activeTabs(Request $request,$id){
+
+        $upStatusTabs = tabsModel::find($id);
+
+        $upStatusTabs->update(['status'=>1]);
+
+        return redirect()->route('admin.tabsList')->with('success',' Trạng thái cập nhật thành công');
+
+    }
+    public function notActiveTabs(Request $request,$id){
+
+        $upStatusTabs = tabsModel::find($id);
+        
+        $upStatusTabs->update(['status'=>0]);
+
+        return redirect()->route('admin.tabsList')->with('success',' Trạng thái cập nhật thành công');
+
+    }
+
 
 
 

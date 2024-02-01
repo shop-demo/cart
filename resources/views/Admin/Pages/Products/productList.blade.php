@@ -97,10 +97,7 @@
                   <th scope="col">Sale</th>
                   <th scope="col">Status</th>
                   <th scope="col">created_at</th>
-                  <th scope="col">Product New</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">Bán chạy</th>
-                  <th scope="col">Giá tốt</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -126,13 +123,10 @@
                   </form>  
                   </td>
                   <td>{{$product->created_at == null ? '' : $product->created_at->format('m-d-Y')}}</td>
-                  <td>{{$product->product_new}}</td>
                   <td>{{$product->quantity}}</td>
-                  <td>{{$product->ban_chay_nhat}}</td>
-                  <td>{{$product->gia_tot}}</td>
-
                   <td>
                     <div class="d-flex">
+                      <a href="{{route('admin.productTabs',['id'=>$product->id])}}" class="btn btn-info btn-sm me-1">tabs</a>
                       <a href="{{route('admin.productEdit',['id'=>$product->id])}}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                       <form action="" method="post" id="pro_form">
                         @csrf @method('DELETE')

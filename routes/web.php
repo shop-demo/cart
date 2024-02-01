@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\customesController;
 use App\Http\Controllers\Admin\rolesController;
 use App\Http\Controllers\Ajax\seachController;
 use App\Http\Controllers\Frontend\homeController;
+use App\Http\Controllers\Admin\tabsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,10 +21,10 @@ use App\Http\Controllers\Frontend\homeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 
 /*ADMIN*/
@@ -62,6 +63,9 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	Route::post('/productAdd',[productsController::class,'store'])->name('admin.productAdd_Post');
 	Route::get('/productEdit/{id}',[productsController::class,'show'])->name('admin.productEdit');
 	Route::put('/productEdit/{id}',[productsController::class,'update'])->name('admin.productUpdate');
+	//add tabs
+	Route::get('/productTabs/{id}',[productsController::class,'tabs'])->name('admin.productTabs');
+	Route::put('/productTabs/{id}',[productsController::class,'addTabs'])->name('admin.productTabs_put');
 
 	Route::delete('/productDelete/{id}',[productsController::class,'delete'])->name('admin.productDelete');
 	Route::any('/productsDelete',[productsController::class,'destroy'])->name('admin.productsDelete');
@@ -104,7 +108,19 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 
 	/*--roles---------------------
 	------------------------------*/
-	
+
+	/*Tabs*/
+	Route::get('/tabsList',[tabsController::class,'index'])->name('admin.tabsList');
+	Route::get('/tabsAdd',[tabsController::class,'create'])->name('admin.tabsAdd');
+	Route::post('/tabsAdd_post',[tabsController::class,'store'])->name('admin.tabsAdd_post');
+	Route::get('/tabsEdit/{id}',[tabsController::class,'show'])->name('admin.tabsEdit');
+	Route::put('/tabsEdit/{id}',[tabsController::class,'edit'])->name('admin.tabsEditPut');
+	Route::delete('/tabstDelete/{id}',[tabsController::class,'delete'])->name('admin.tabsDelete');
+	Route::any('/tabsDestroy}',[tabsController::class,'destroy'])->name('admin.tabsDestroy');
+	//active
+	Route::put('/activeTabs/{id}',[activeController::class,'activeTabs'])->name('admin.activeTabs');
+	Route::put('/notActiveTabs/{id}',[activeController::class,'notActiveTabs'])->name('admin.notActiveTabs');
+	/*end Tabs*/
 	//filemanager
 	Route::get('/file',[adminController::class,'filemanager'])->name('admin.filemanager');
 
@@ -124,4 +140,4 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 
 /*FRONTEND--------
 ------------------*/
-Route::get('/home', [homeController::class,'index'])->name('home.index'); 
+Route::get('/', [homeController::class,'index'])->name('home.index'); 

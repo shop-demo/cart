@@ -204,40 +204,8 @@
                     @enderror
                   </div>
                 <!--  end số lượng  -->
-
-                <!--  sản phẩm nổi bât --> 
-                <div class="row mb-5">
-                  <div class="col-sm-2" style="margin-top:2rem!important;">
-                    <p class="fw-bold">Sản phẩm Nổi bật</p>
-                  </div>
-                  <div class="col-sm-4"  style="margin-top:2rem!important;">  
-                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="product_new" id="gridCheck1" value= "1" {{ old('product_new')== 1 || $dataProduct->product_new == 1 ? 'checked' : false }}>
-                      <label class="form-check-label" for="gridCheck1">
-                        Sản Phẩm mới
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4"  style="margin-top:2rem!important;">  
-                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck3" name="gia_tot" value="1" {{ old('gia_tot')== 1 || $dataProduct->gia_tot == 1 ? 'checked' : false }}>
-                      <label class="form-check-label" for="gridCheck3">
-                        Giá tốt
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck4" name="ban_chay_nhat" value="1" {{ old('ban_chay_nhat')== 1 || $dataProduct->ban_chay_nhat == 1 ? 'checked' : false }}>
-                      <label class="form-check-label" for="gridCheck4">
-                        Sản phẩm bán chạy nhất
-                      </label>
-                    </div>
-                  </div>
-                  
-                </div>
-               <!--  end sản phẩm nổi bât --> 
-                  
-                </div>
-                
+               </div>
+                <!--  status  -->
                 <fieldset class="row mb-4">
                   <legend class="col-form-label col-sm-2 pt-0 fw-bold">Status</legend>
                   <div class="col-sm-10">
@@ -256,11 +224,9 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-
-                    
                   </div>
                 </fieldset>
-                
+                <!--  end status  -->
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Chọn Caterogy</label>
                   <div class="col-sm-10">
@@ -271,7 +237,6 @@
                       
                     @endforeach
                     </select>
-                       
                   </div>
                 </div>
 

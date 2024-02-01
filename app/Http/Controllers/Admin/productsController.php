@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\productsModel;
 use App\Http\Requests\Admin\Products\storeProductReq;
 use App\Http\Requests\admin\Products\showProductReq;
+use App\Models\Admin\tabsModel;
+use App\Models\Admin\tabs_productsModel;
 use Illuminate\Http\Request;
 
 class productsController extends Controller
@@ -48,15 +50,11 @@ class productsController extends Controller
         $insetProducts->code = Tieu_de($request->name);
         $insetProducts->avatar = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->avatar);
         $insetProducts->album_image = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->album_image);  
-       
         $insetProducts->description     = $request->description;
         $insetProducts->product_details = $request->product_details;
         $insetProducts->price           = $request->price;
         $insetProducts->sale            = $request->sale;
-        $insetProducts->product_new     = $request->product_new;
         $insetProducts->quantity        = $request->quantity;
-        $insetProducts->ban_chay_nhat   = $request->ban_chay_nhat;
-         $insetProducts->gia_tot        = $request->gia_tot;
         $insetProducts->category_id     = $request->category_id;
         $insetProducts->status          = $request->status;
         $insetProducts->save();
@@ -97,10 +95,9 @@ class productsController extends Controller
         $upProducts->product_details = $request->product_details;
         $upProducts->price           = $request->price;
         $upProducts->sale            = $request->sale;
-        $upProducts->product_new     = $request->product_new;
+       
         $upProducts->quantity        = $request->quantity;
-        $upProducts->ban_chay_nhat   = $request->ban_chay_nhat;
-        $upProducts->gia_tot         = $request->gia_tot;
+       
         $upProducts->category_id = $request->category_id;
         $upProducts->status = $request->status;
         $upProducts->save();
@@ -131,7 +128,6 @@ class productsController extends Controller
      */
     public function destroy(Request $request)
     {
-        
         $post = $request->checkName;
         if(is_array($post)){
             foreach ($post as $key => $value) {
@@ -145,6 +141,30 @@ class productsController extends Controller
     }
 
 
+  //add tabs
+    public function tabs(Request $request, $id){
+
+        $title="Thêm Tabs cho sản phẩm";
+        
+        $dataProduct = productsModel::find($id);
+       
+        $tabs = $dataProduct->tabs->pluck('tabs_name','id')->toArray();
+        
+        $dataTabs = tabsModel::all();
+        
+        return view('Admin.Pages.Products.tabsPro',compact('title','dataProduct','dataTabs','tabs'));
+   
+    }
+    public function addTabs(Request $request, $id){
+
+         $dataProduct = productsModel::find($id);
+        
+         $dataProduct->update(['name'=>$request->name]);
+         
+         $dataProduct->tabs()->sync($request->tabs_name);
+        
+         return redirect()->route('admin.productList')->with('success','Thêm tasb sản phẩm thành công');
+    }
 
 
 }

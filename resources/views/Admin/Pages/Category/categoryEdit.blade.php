@@ -67,7 +67,7 @@
                  
                   @foreach($data as $key=>$item)
                  
-                  <option value="{{$item->id}}" {{ old('id_cha')== $item->id ? 'selected' : false }}>{{str_repeat(' --- ',$item->level).$item->name}}</option>
+                  <option value="{{$item->id}}" {{ old('id_cha')== $item->id ||$dataCategoryEdit->id_cha == $item->id   ? 'selected' : false }}>{{str_repeat(' --- ',$item->level).$item->name}}</option>
                  
                   @endforeach
 

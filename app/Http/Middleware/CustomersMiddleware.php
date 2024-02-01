@@ -26,12 +26,12 @@ class CustomersMiddleware
         $user = Auth::guard('customers')->user();
        
         $route = $request->route()->getName();//route hiện tại
-        
+       /* 
         if($user->cant($route)){
           
            return redirect()->route('error',['code'=>403]);//quay về login để đăng nhập
             
-        }
+        }*/
       
         return $next($request);
     }

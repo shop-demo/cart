@@ -117,7 +117,7 @@ class bannerController extends Controller
     public function destroy(Request $request,bannerModel $bannerModel)
     {
         $post = $request->checkName;
-        if(is_array($post)){
+            if(is_array($post)){
             foreach($post as $key=>$id_post){
                
                $deleteBanner = bannerModel::where('id',$id_post);

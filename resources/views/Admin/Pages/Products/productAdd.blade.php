@@ -196,38 +196,6 @@
                   <!--  end số lượng  -->
                 </div>
                  
-
-                 <!--  sản phẩm nổi bât --> 
-                <div class="row mb-5 ">
-                  <div class="col-sm-2  pt-2">
-                    <p class="fw-bold">Sản phẩm Nổi bật</p>
-                  </div>
-                  <div class="col-sm-4 pt-2">  
-                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="product_new" id="gridCheck1" value= "1">
-                      <label class="form-check-label" for="gridCheck1">
-                        Sản Phẩm mới
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">  
-                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck3" name="gia_tot" value="1">
-                      <label class="form-check-label" for="gridCheck3">
-                        Giá tốt
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck4" name="ban_chay_nhat" value="1">
-                      <label class="form-check-label" for="gridCheck4">
-                        Sản phẩm bán chạy nhất
-                      </label>
-                    </div>
-                  </div>
-                  
-                </div>
-               <!--  end sản phẩm nổi bât --> 
-               
                <!--  status --> 
                 <fieldset class="row mb-4">
                   <legend class="col-form-label col-sm-2 pt-0 fw-bold">Status</legend>
@@ -247,12 +215,10 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                    <!-- end status --> 
-                    
                   </div>
                 </fieldset>
 
-                
+                 <!-- end status --> 
                 
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Chọn Caterogy</label>

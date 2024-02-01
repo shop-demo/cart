@@ -5,13 +5,29 @@
        @include('frontend.pages.block.slider')
       <!-- end slider -->
       <!-- section -->
+      <div class="section padding_layout_1 section_information">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="full">
+                     <h4>Let us make the differences<br>Interior Design</h4>
+                  </div>
+                  <div class="full">
+                     <a class="read-btn" href="contact.html">Discover Now</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end section -->
+      <!-- section -->
       <div class="section padding_layout_1 portfolio_section">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="full">
                      <div class="main_heading text_align_center">
-                        <h2><span>Sản phẩm nổi bật</span></h2>
+                        <h2><span>Gallery</span></h2>
                      </div>
                   </div>
                </div>
@@ -22,31 +38,17 @@
                      <div class="gallery_tab">
                         <div class="center">
                            <div class="tab_buttons">
-                              <button class="cuts_bt filter-button" data-filter="all">Tất cả sản phẩm</button>
-                              <button class="cuts_bt filter-button" data-filter="houses">Nổi bật</button>
-                              <button class="cuts_bt filter-button" data-filter="decoration">Giá tốt</button>
-                              <button class="cuts_bt filter-button" data-filter="furniture">Mới nhất</button>
-                              <button class="cuts_bt filter-button" data-filter="office">Bán chạy</button>
+                              <button class="cuts_bt filter-button" data-filter="all">All Projects</button>
+                              @foreach($tabs as $key=>$item)
+                              <button class="cuts_bt filter-button" data-filter="houses">{{$item->tabs_name}}</button>
+                              @endforeach
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter houses furniture">
-                  <div class="product_list">
-                     <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
-                        <div class="center">
-                           <h4 class="p-name"><a href="">Product Name</a></h4>
-                        </div>
-                        <div class="starratin s-star">
-                           <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
-                        </div>
-                     </div>
-                  </diV>
+                  <img src="{{url('public/frontend')}}/images/layout_img/pr1.png" alt="#" class="img-responsive" />
                </div>
                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter decoration furniture">
                   <img src="{{url('public/frontend')}}/images/layout_img/pr2.png" alt="#" class="img-responsive" />

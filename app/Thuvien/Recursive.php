@@ -2,7 +2,7 @@
 use App\Thuvien;
 use App\Models\Admin\categoryModel;
 use App\Models\Admin\productModel;
-
+use App\Models\Admin\productHotModel;
 
 //hàm convert không dấu
 

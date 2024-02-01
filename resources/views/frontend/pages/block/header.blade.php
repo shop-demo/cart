@@ -49,36 +49,34 @@
                                  <a class="active" href="{{route('home.index')}}">Home</a>
                               </li>
                               <li>
-                                 <a href="#">Pages</a>
+                                 <a href="">Pages</a>
                                  <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="career.html">Career</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
-                                    <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                                    <li><a href="error.html">Error 404</a></li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="service.html">Services</a>
-                                 <ul>
-                                    <li><a href="service_detail.html">Services Detail</a></li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="blog.html">Blog</a>
-                                 <ul>
-                                    <li><a href="blog_detail.html">Blog Detail</a></li>
+                                    @foreach($pages as $key=>$page)
+                                    <li><a href="">{{$page->name}}</a></li>
+                                    @endforeach
                                  </ul>
                               </li>
                               <li>
                                  <a href="shop.html">Shop</a>
                                  <ul>
-                                    <li><a href="shop.html">Shop List</a></li>
-                                    <li><a href="shop_detail.html">Shop Detail</a></li>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
+                                    @foreach($shopList as $key=>$shop)
+                                    <li><a href="">{{$shop->name}}</a></li>
+                                    @endforeach
                                  </ul>
                               </li>
+                              <li>
+                                 <a href="">Services</a>
+                                 <ul>
+                                    <li><a href="">Services Detail</a></li>
+                                 </ul>
+                              </li>
+                              <li>
+                                 <a href="">Blog</a>
+                                 <ul>
+                                    <li><a href="">Blog Detail</a></li>
+                                 </ul>
+                              </li>
+                             
                               <li><a href="contact.html">Contact</a></li>
                            </ul>
                         </div>
