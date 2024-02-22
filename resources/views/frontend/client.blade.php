@@ -16,25 +16,25 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- site icons -->
-      <link rel="icon" href="{{url('public/Frontend')}}/images/fevicon/fevicon.png" type="image/gif" />
+      <link rel="icon" href="{{url('public/frontend')}}/images/fevicon/fevicon.png" type="image/gif" />
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/bootstrap.min.css" />
       <!-- Site css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/style.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/style.css" />
       <!-- responsive css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/responsive.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/responsive.css" />
       <!-- colors css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/colors1.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/colors1.css" />
       <!-- custom css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/custom.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/custom.css" />
       <!-- wow Animation css -->
       <link rel="stylesheet" href="{{url('public/Frontend')}}/css/animate.css" />
       <!-- revolution slider css -->
-      <link rel="stylesheet" type="text/css" href="{{url('public/Frontend')}}/revolution/css/settings.css" />
-      <link rel="stylesheet" type="text/css" href="{{url('public/Frontend')}}/revolution/css/layers.css" />
-      <link rel="stylesheet" type="text/css" href="{{url('public/Frontend')}}/revolution/css/navigation.css" />
+      <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/settings.css" />
+      <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/layers.css" />
+      <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/navigation.css" />
       <!--home -->
-      <link rel="stylesheet" type="text/css" href="{{url('public/Frontend')}}/style/css/home.css" />
+      <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/style/css/home.css" />
 
       <!--[if lt IE 9]>
      

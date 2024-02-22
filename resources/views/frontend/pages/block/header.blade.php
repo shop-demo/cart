@@ -52,7 +52,7 @@
                                  <a href="">Pages</a>
                                  <ul>
                                     @foreach($pages as $key=>$page)
-                                    <li><a href="">{{$page->name}}</a></li>
+                                    <li><a href="{{route('view',['slug'=>$page->code])}}">{{$page->name}}</a></li>
                                     @endforeach
                                  </ul>
                               </li>
@@ -60,7 +60,7 @@
                                  <a href="shop.html">Shop</a>
                                  <ul>
                                     @foreach($shopList as $key=>$shop)
-                                    <li><a href="">{{$shop->name}}</a></li>
+                                    <li><a href="{{route('view',['slug'=>$shop->code])}}">{{$shop->name}}</a></li>
                                     @endforeach
                                  </ul>
                               </li>

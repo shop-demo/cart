@@ -7,6 +7,7 @@ use App\Models\Admin\tabsModel;
 use App\Http\Requests\Admin\Tabs\reqTabs_store;
 use App\Http\Requests\Admin\Tabs\reqTabsEdit;
 use Illuminate\Http\Request;
+use Str;
 
 class tabsController extends Controller
 {
@@ -49,7 +50,7 @@ class tabsController extends Controller
         
         $AddProHot->tabs_name = $request->tabs_name;
         
-        $AddProHot->code = Tieu_de($request->tabs_name);
+        $AddProHot->code = Str::slug($request->tabs_name);
         
         $AddProHot->status = $request->status;
        
@@ -83,7 +84,7 @@ class tabsController extends Controller
     {
         $dataUpdate = tabsModel::find($id);
         $dataUpdate->tabs_name = $request->tabs_name;
-        $dataUpdate->code = Tieu_de($request->tabs_name);
+        $dataUpdate->code = Str::slug($request->tabs_name);
         $dataUpdate->status = $request->status;
         $dataUpdate->save();
         return redirect()->route('admin.tabsList')->with('success','Cập nhật dữ liệu thành công');

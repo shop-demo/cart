@@ -7,6 +7,7 @@ use App\Models\Admin\categoryModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Category\storeCategoryReq;
 use App\Http\Requests\Admin\Category\showCategoryReq;
+use Str;
 
 
 class categoryController extends Controller
@@ -45,7 +46,8 @@ class categoryController extends Controller
        
             $newCategory = new categoryModel;
             $newCategory->name = request()->name;
-            $newCategory->code = Tieu_de(request()->name);
+            //$newCategory->code = Tieu_de(request()->name);
+            $newCategory->code = Str::slug($request->name);
             $newCategory->id_cha =request()->id_cha;
             $newCategory->status =request()->status;
             $newCategory->save();
@@ -77,7 +79,7 @@ class categoryController extends Controller
     {
        $dataCategoryUpdate = categoryModel::find($id);
        $dataCategoryUpdate->name = request()->name;
-       $dataCategoryUpdate->code = Tieu_de(request()->name);
+       $dataCategoryUpdate->code = Str::slug($request->name);
        $dataCategoryUpdate->id_cha =request()->id_cha;
        $dataCategoryUpdate->status =request()->status;
        $dataCategoryUpdate->save();

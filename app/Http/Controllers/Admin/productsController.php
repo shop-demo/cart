@@ -9,6 +9,7 @@ use App\Http\Requests\admin\Products\showProductReq;
 use App\Models\Admin\tabsModel;
 use App\Models\Admin\tabs_productsModel;
 use Illuminate\Http\Request;
+use Str;
 
 class productsController extends Controller
 {
@@ -45,9 +46,10 @@ class productsController extends Controller
     public function store(storeProductReq $request)
     {
         
+
         $insetProducts = new productsModel;
         $insetProducts->name = $request->name;
-        $insetProducts->code = Tieu_de($request->name);
+        $insetProducts->code = Str::slug($request->name);
         $insetProducts->avatar = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->avatar);
         $insetProducts->album_image = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->album_image);  
         $insetProducts->description     = $request->description;
@@ -57,6 +59,7 @@ class productsController extends Controller
         $insetProducts->quantity        = $request->quantity;
         $insetProducts->category_id     = $request->category_id;
         $insetProducts->status          = $request->status;
+        
         $insetProducts->save();
 
         return redirect()->route('admin.productList')->with('success','Thêm dữ liệu thành công'); 
@@ -87,7 +90,7 @@ class productsController extends Controller
         $upProducts = productsModel::find($id);
 
         $upProducts->name = $request->name;
-        $upProducts->code = Tieu_de($request->name);
+        $upProducts->code = Str::slug($request->name);
         $upProducts->avatar = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->avatar);
         $upProducts->album_image = str_replace("http://localhost:8088/website/shopping/public/uploads/Products/", '',$request->album_image);  
        

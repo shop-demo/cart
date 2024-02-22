@@ -28,7 +28,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        
        app(Gate::class)->before(function(Authorizable $auth,$route){
             
             if(method_exists($auth, 'checkQuyen')){

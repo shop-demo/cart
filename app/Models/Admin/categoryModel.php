@@ -15,8 +15,8 @@ class categoryModel extends Model
    
     
     //1 category có nhiều product :1-n query trong cùng 1 bảng
-    function pro(){
-       return $this->hasMany(productModel::class, 'category_id','id');
+    function product(){
+       return $this->hasMany('App\Models\Admin\productsModel', 'category_id','id');
    }
 
 }

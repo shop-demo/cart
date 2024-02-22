@@ -1,10 +1,10 @@
 @charset "UTF-8";
 .p-img{
-	border: 5px solid #eee;
-
+	border: 5px solid #f1f1f1;
+	
 }
-.p-productDetil{
-	background: #ccc;
+.p-productDetail{
+	background: #f8f9fa;
 }
 .product_detail_btm h4 a{
 	color: #333;
@@ -17,4 +17,15 @@
 }
 .s-star{
 	color: #333;
+}
+
+.filter-button{
+	background:#e7e7e7;
+	color: #333;
+	
+}
+.filter-button:hover{
+	background:#d7bb3e;
+	color: #fff;
+	border: 1px solid #d7bb3e;
 }

@@ -33,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
                 $view->with([
                     'listCategory'=>categoryModel::all(),
-                    'listProduct' => productsModel::all()
+                    'listProduct' => productsModel::all(),
+                    'pages'=> categoryModel::where('id_cha',0)->get(),
+                    'shopList' =>categoryModel::where('id_cha','<>','0')->get()
                    
                 ]);
 

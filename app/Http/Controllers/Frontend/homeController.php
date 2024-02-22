@@ -16,18 +16,38 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     
-    public function index(){
-
+    public function index(Request $request){
+       
     	//category
-    	$shopList = categoryModel::where('id_cha','>','0')->get();
+    	$shopList = categoryModel::where('id_cha','<>','0')->get();
     	
-    	$pages = categoryModel::where('id_cha',0)->get();
-
+        $pages = categoryModel::where('id_cha',0)->get();
+        
     	//button tabs
-    	$tabs = tabsModel::all();
-    	
+    	$tabs = tabsModel::where('status',1)->get();
+       
+        return view('welcome',compact('shopList','pages','tabs'));
+    }
+    
+    //lấy sản phẩm theo danhmuc
+    public function view(Request $request,$slug){
+       //get danh mục sp theo slug
+        $pageShow = categoryModel::where('code',$slug)->first();
+         //lấy sản phẩm theo danh mục sản phẩm
+        $pageProduct = categoryModel::where('code',$slug)->first()->product;
 
-    	return view('welcome',compact('shopList','pages','tabs'));
+        return view('frontend.pages.showPages',compact('pageProduct','pageShow'));
+    }
+
+    public function product_Details(Request $request,$page,$slug){
+
+         //chi tiết sản phẩm
+         $productDetail = productsModel::where('code',$slug)->first();
+        
+         //get sanpham cùng tabs
+          $t_pro = $productDetail->tabs;
+
+         return view('frontend.pages.productDetail',compact('productDetail','t_pro'));
     }
 
 

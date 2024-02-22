@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\tabsController;
 Route::get('/', function () {
     return view('welcome');
 });*/
-
+//Route::get('/', [homeController::class,'index'])->name('home.index');
 
 /*ADMIN*/
 
@@ -140,4 +140,6 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 
 /*FRONTEND--------
 ------------------*/
-Route::get('/', [homeController::class,'index'])->name('home.index'); 
+Route::get('/', [homeController::class,'index'])->name('home.index');
+Route::get('{slug}', [homeController::class,'view'])->name('view');
+Route::get('{page}/{slug}', [homeController::class,'product_Details'])->name('product_Details');    

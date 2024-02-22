@@ -17,4 +17,10 @@ class tabsModel extends Model
     protected $primariKey ='id';
     
     public $timestamps = true;
+
+    public function pro(){
+    	return $this->belongsToMany('App\Models\Admin\productsModel','tabs_products','tabs_id','product_id')->where('status',1);
+    }
+
+
 }

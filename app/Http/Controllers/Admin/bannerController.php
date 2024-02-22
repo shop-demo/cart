@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\bannerModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Banner\bannerShowRequest;
-use  App\Http\Requests\Admin\Banner\bannerStoreRequest;
+use App\Http\Requests\Admin\Banner\bannerStoreRequest;
+use Str;
 
 class bannerController extends Controller
 {
@@ -20,7 +21,6 @@ class bannerController extends Controller
        
        $title="Banner-slide";
        $bannerList = bannerModel::orderBy('id','DESC')->paginate(10);
-      
        return view('Admin.Pages.Banner.bannerList',compact('title','bannerList'));
     }
 
@@ -45,7 +45,7 @@ class bannerController extends Controller
     {
         $insetBanner = new bannerModel;
         $insetBanner->name = $request->name;
-        $insetBanner->code = Tieu_de($request->name);
+        $insetBanner->code = Str::slug($request->name);
         $insetBanner->image = str_replace("http://localhost:8088/website/shopping/public/uploads/slides/", "",$request->image);  
         $insetBanner->description = $request->description;
         $insetBanner->link = $request->link;
@@ -79,7 +79,7 @@ class bannerController extends Controller
     {
         $bannerDetailEdit = bannerModel::find($id);
         $bannerDetailEdit->name = $request->name;
-        $bannerDetailEdit->code = Tieu_de($request->name);
+        $bannerDetailEdit->code = Str::slug($request->name);
        
         $bannerDetailEdit->image = str_replace("http://localhost:8088/website/shopping/public/uploads/slides/", '',$request->image);  
         $bannerDetailEdit->description = $request->description;

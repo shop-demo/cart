@@ -1,5 +1,4 @@
 @extends('frontend.client')
-
 @section('main')
       <!-- slider -->
        @include('frontend.pages.block.slider')
@@ -20,14 +19,18 @@
          </div>
       </div>
       <!-- end section -->
-      <!-- section -->
-      <div class="section padding_layout_1 portfolio_section">
+      @php 
+           
+           
+       @endphp 
+      <!-- section sản phẩm nổi bật-->
+       <div class="section padding_layout_1 portfolio_section">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="full">
                      <div class="main_heading text_align_center">
-                        <h2><span>Gallery</span></h2>
+                        <h2><span>Sản phẩm nổi bật</span></h2>
                      </div>
                   </div>
                </div>
@@ -38,38 +41,55 @@
                      <div class="gallery_tab">
                         <div class="center">
                            <div class="tab_buttons">
+                              @if($tabs->count())
                               <button class="cuts_bt filter-button" data-filter="all">All Projects</button>
-                              @foreach($tabs as $key=>$item)
-                              <button class="cuts_bt filter-button" data-filter="houses">{{$item->tabs_name}}</button>
+                              @foreach($tabs as $key=>$btn)
+                              <button class="cuts_bt filter-button" data-filter="houses_{{$btn->id}}">{{$btn->tabs_name }}</button>
                               @endforeach
+                             @endif
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter houses furniture">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr1.png" alt="#" class="img-responsive" />
-               </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter decoration furniture">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr2.png" alt="#" class="img-responsive" />
-               </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter houses furniture">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr3.png" alt="#" class="img-responsive" />
-               </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter decoration office">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr4.png" alt="#" class="img-responsive" />
-               </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter houses office">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr5.png" alt="#" class="img-responsive" />
-               </div>
-               <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter decoration office">
-                  <img src="{{url('public/frontend')}}/images/layout_img/pr6.png" alt="#" class="img-responsive" />
-               </div>
-            </div>
+              
+                <!-- end button -->
+               @if($tabs->count())
+                  @foreach($tabs as $key=>$btn)
+                     @foreach($btn->pro as $key=>$val)
+                  <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-6 filter houses_{{ $btn->id}} furniture">
+                     <div class="product_list">
+                        <div class="product_img p-img" style="background: none; border: 5px solid #f1f1f1;"> <img class="img-responsive" src="{{url('public/uploads')}}/Products/{{ $val->avatar}}" alt=""> </div>
+                        <div class="product_detail_btm b-productDetail" style="background: #f8f9fa;">
+                           <div class="center" >
+                              <h4 class="p-name text-p"><a href="{{ route('product_Details',['page'=>$btn->code,'slug'=>$val->code]) }}">{{ $val->name}}</a></h4>
+
+                           </div>
+                           <div class="starratin s-star">
+                              <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                           </div>
+                           <div class="product_price ">
+                              <p>
+                              @if($val->sale >0 && $val->sale < $val->price)
+                              <span class="old_price o-price">{{ number_format($val->price)}} vnđ</span> 
+                              <span class="new_price n-price">{{number_format($val->sale)}} vnđ</span>
+                              @else
+                              
+                               <span class="old_price o-price" style="text-decoration:none; font-weight: 600;">{{number_format($val->price) }} vnđ</span> 
+                              @endif
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                     @endforeach
+                  @endforeach
+               @endif
+             
+            </div> <!-- end row -->
          </div>
       </div>
-      <!-- end section -->
-      
+      <!-- end section sản phẩm nổi bật-->
       <!-- section -->
       <div class="section padding_layout_1">
          <div class="container">
@@ -77,8 +97,8 @@
                <div class="col-md-12">
                   <div class="full">
                      <div class="main_heading text_align_center heading_with_subtitle">
-                        <h2><span>Mua sắm với chúng tôi</span></h2>
-                        <p class="large">We package the products with best Services to make you a<br>happy customer.</p>
+                        <h2><span>Sản phẩm luôn có</span></h2>
+                        <p class="large">Mua sắm với chúng tôi<br>happy customer.</p>
                      </div>
                   </div>
                </div>
@@ -87,7 +107,7 @@
                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                   <div class="product_list">
                      <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
+                     <div class="product_detail_btm p-productDetail">
                         <div class="center">
                            <h4 class="p-name"><a href="">Product Name</a></h4>
                         </div>
@@ -95,7 +115,10 @@
                            <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
                         </div>
                         <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
+                           <p>
+                           <span class="old_price o-price">$1800</span>
+                           <span class="new_price n-price">$1500</span>
+                           </p>
                         </div>
                      </div>
                   </div>
@@ -103,7 +126,7 @@
                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                   <div class="product_list">
                      <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
+                     <div class="product_detail_btm p-productDetail">
                         <div class="center">
                            <h4 class="p-name"><a href="">Product Name</a></h4>
                         </div>
@@ -116,71 +139,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                  <div class="product_list">
-                     <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
-                        <div class="center">
-                           <h4 class="p-name"><a href="">Product Name</a></h4>
-                        </div>
-                        <div class="starratin s-star">
-                           <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                  <div class="product_list">
-                     <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
-                        <div class="center">
-                           <h4 class="p-name"><a href="">Product Name</a></h4>
-                        </div>
-                        <div class="starratin s-star">
-                           <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                  <div class="product_list">
-                     <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
-                        <div class="center">
-                           <h4 class="p-name"><a href="">Product Name</a></h4>
-                        </div>
-                        <div class="starratin s-star">
-                           <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                  <div class="product_list">
-                     <div class="product_img p-img"> <img class="img-responsive" src="{{url('public/Frontend')}}/images/layout_img/1.jpg" alt=""> </div>
-                     <div class="product_detail_btm p-productDetil">
-                        <div class="center">
-                           <h4 class="p-name"><a href="">Product Name</a></h4>
-                        </div>
-                        <div class="starratin s-star">
-                           <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="product_price ">
-                           <p><span class="old_price o-price">$1800</span> <span class="new_price n-price">$1500</span></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
+             
 
             </div>
          </div>

@@ -34,7 +34,7 @@ class showProductReq extends FormRequest
                     
             'price'=> 'required|numeric|min:0|not_in:0', //giá không<0
                     
-            'sale'=> 'required|numeric|min:0|lt:price', //giá km<gia_ban
+            'sale'=> 'nullable|numeric|min:0|lt:price', //giá km<gia_ban
             
             'description'=>'required',
                     
@@ -52,7 +52,6 @@ class showProductReq extends FormRequest
             'name.required'=>'Nhập tên sản phẩm',
             'name.unique'=>'đã có trong hệ thống',
             'code.unique'=>'đã có trong hệ thống',
-           
                     
             'avatar.required'=>'Chọn hình ảnh sản phẩm',
            
@@ -60,7 +59,7 @@ class showProductReq extends FormRequest
                      
             'price.not_in'=>'Giá sản phẩm phải là số lớn hơn 0',
                     
-            'sale.required'=> 'Chưa nhập giá khuyến mại sản phẩm',
+            //'sale.required'=> 'Chưa nhập giá khuyến mại sản phẩm',
                     
             'sale.lt'=>'Giá khuyến mại phải nhỏ giá bán',
                     

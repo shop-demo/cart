@@ -35,7 +35,7 @@ class storeProductReq extends FormRequest
                     
             'price'=> 'required|numeric|min:0|not_in:0', //giá không<0
                     
-            'sale'=> 'required|numeric|min:0|lt:price', //giá km<gia_ban
+            'sale'=> 'nullable|numeric|min:0|lt:price', //giá km<gia_ban
             
             'description'=>'required',
                     
@@ -65,7 +65,7 @@ class storeProductReq extends FormRequest
                      
             'price.not_in'=>'Giá sản phẩm phải là số lớn hơn 0',
                     
-            'sale.required'=> 'Chưa nhập giá khuyến mại sản phẩm',
+            //'sale.required'=> 'Chưa nhập giá khuyến mại sản phẩm',
                     
             'sale.lt'=>'Giá khuyến mại phải nhỏ giá bán',
                     
