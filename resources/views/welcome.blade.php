@@ -3,22 +3,7 @@
       <!-- slider -->
        @include('frontend.pages.block.slider')
       <!-- end slider -->
-      <!-- section -->
-      <div class="section padding_layout_1 section_information">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="full">
-                     <h4>Let us make the differences<br>Interior Design</h4>
-                  </div>
-                  <div class="full">
-                     <a class="read-btn" href="contact.html">Discover Now</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end section -->
+
       @php 
            
            
@@ -71,7 +56,7 @@
                            <div class="product_price ">
                               <p>
                               @if($val->sale >0 && $val->sale < $val->price)
-                              <span class="old_price o-price">{{ number_format($val->price)}} vnđ</span> 
+                              <span class="old_price o-price">{{ number_format($val->price)}} vnđ</span></br> 
                               <span class="new_price n-price">{{number_format($val->sale)}} vnđ</span>
                               @else
                               
@@ -91,7 +76,7 @@
       </div>
       <!-- end section sản phẩm nổi bật-->
       <!-- section -->
-      <div class="section padding_layout_1">
+      <div class="section padding_layout_1" style="padding-top:30px;">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -141,6 +126,26 @@
                </div>
              
 
+            </div>
+         </div>
+      </div>
+      <!-- end section -->
+      <!-- proflie -->
+       @include('frontend.pages.block.profile')
+      <!-- end proflie -->
+
+      <!-- section -->
+      <div class="section padding_layout_1 section_information">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="full">
+                     <h4>Let us make the differences<br>Interior Design</h4>
+                  </div>
+                  <div class="full">
+                     <a class="read-btn" href="contact.html">Discover Now</a>
+                  </div>
+               </div>
             </div>
          </div>
       </div>

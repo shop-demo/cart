@@ -32,10 +32,11 @@ class customesModel extends Authenticatable
     }
 
     public function checkQuyen($route){
-    	$userName = Auth::guard('customers')->user();
-    	$url = $userName->roles->pluck('role')->toArray();
-    	 
     	
+        $userName = Auth::guard('customers')->user();
+    	
+        $url = $userName->roles->pluck('role')->toArray();
+    	 
     	foreach ($url as $key => $value) {
     	 
     	 $check = json_decode($value);
@@ -50,6 +51,8 @@ class customesModel extends Authenticatable
     	
     }
 
+   
+    
     
 
 }

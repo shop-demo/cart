@@ -28,14 +28,15 @@
       <!-- custom css -->
       <link rel="stylesheet" href="{{url('public/frontend')}}/css/custom.css" />
       <!-- wow Animation css -->
-      <link rel="stylesheet" href="{{url('public/Frontend')}}/css/animate.css" />
+      <link rel="stylesheet" href="{{url('public/frontend')}}/css/animate.css" />
       <!-- revolution slider css -->
       <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/settings.css" />
       <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/layers.css" />
       <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/revolution/css/navigation.css" />
       <!--home -->
       <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/style/css/home.css" />
-
+      <!-- zoom effect -->
+      <link rel='stylesheet' href="{{url('public/frontend')}}/css/hizoom.css">
       <!--[if lt IE 9]>
      
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -257,7 +258,12 @@
 
       <!-- owlCarouse js -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     @yield('js')
+      
+      <!-- zoom effect -->
+      <script src="{{url('public/frontend')}}/js/hizoom.js"></script>
+      <!-- Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      @yield('js')
 
    </body>
 

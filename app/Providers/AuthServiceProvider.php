@@ -6,6 +6,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 //use Illuminate\Support\Facades\Gate;
 use Illuminate\Contracts\Auth\Access\Gate;//them vao
 use Illuminate\Contracts\Auth\Access\Authorizable;//them vào
+
 use Auth;
 
 class AuthServiceProvider extends ServiceProvider
@@ -27,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+    
 
        app(Gate::class)->before(function(Authorizable $auth,$route){
             
@@ -37,6 +39,13 @@ class AuthServiceProvider extends ServiceProvider
             return false;
         }); 
 
-        
     }
+
+    
+
+
+
+
+
+
 }

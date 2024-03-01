@@ -81,7 +81,7 @@
                               <div class="tab-content">
                                  <div id="description" class="tab-pane active">
                                     <div class="product_desc">
-                                       <p>{{strip_tags($productDetail->product_details)}}</p>
+                                       <p>{!! $productDetail->product_details !!}</p>
                                     </div>
                                  </div>
                                  <!-- Tab reviews -->

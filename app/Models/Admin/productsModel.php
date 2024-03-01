@@ -24,4 +24,6 @@ class productsModel extends Model
      public function pro_category(){
         return $this->belongsTo(categoryModel::class,'category_id','id');
      }
+
+
 }
