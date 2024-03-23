@@ -24,6 +24,7 @@
       <!-- end inner page banner -->
       @php  @endphp
       <!-- section -->
+      <p id="html"></p>
       <div class="section padding_layout_1 product_detail">
          <div class="container">
             <div class="row">
@@ -46,17 +47,23 @@
                                <span class="old_price o-price" style="text-decoration:none; font-weight: 600;">{{ number_format($productDetail->price)}} vnđ</span> 
                           @endif 
                          <span class="rating"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span> <span class="review">(5 customer review)</span> </div>
+                        <!-- ADD CART -->
                         <div class="detail-contant">
                            <p>{{$productDetail->description}}<br>
                               <span class="stock">Số lượng: {{$productDetail->quantity}}</span> 
                            </p>
-                           <form class="cart" method="post" action="">
-                              <div class="quantity">
+                            
+                           <form class="cart" method="post" action="" >
+                              @csrf
+                              <div class="quantity product" >
                                  <input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+                                 <input type="hidden" value="{{route('cart.add')}}" name="url" class="input_route"/>
                               </div>
-                              <button type="submit" class="btn sqaure_bt">Add to cart</button>
+                              <button type="button" class="btn sqaure_bt bt_addCart" data-product-id ="{{$productDetail->id }}">Add to cart</button>
                            </form>
+                          
                         </div>
+                         <!--end ADD CART -->
                         <div class="share-post">
                            <a href="#" class="share-text">Share</a>
                            <ul class="social_icons">
@@ -138,6 +145,8 @@
                         </div>
                      </div>
                   </div>
+
+                   <!-- SẢN PHẨM CÙNG LOẠI -->
                   <div class="row">
                      <div class="col-md-12">
                         <div class="full">
@@ -148,6 +157,7 @@
                      </div>
                   </div>
                   <div class="row">
+                  @if($t_pro)
                  @foreach($t_pro as $key=>$item)
                      @foreach($item->pro as $key=>$value)
                      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
@@ -169,12 +179,23 @@
                                  <span class="old_price o-price">{{$value->price}}</span>
                                  @endif
                               </div>
+                              <!--add mua ngay -->
+                              <div class="d-flex justify-content-around" style="margin-top: 15px;">
+                                 <p class="fs-4">status</p>
+                                 <form action="" method="post">
+                                 @csrf
+                                 <input type="hidden" value="{{route('cart.add')}}" name="url" class="input_route"/>
+                                 <p><button type="" class="btn-link bt_addCart" data-product-id="{{$value->id}}" style="border: none;">Mua ngay</button></p>
+                                 <form>
+                              </div>
+                              <!-- end add mua ngay -->
                            </div>
                         </div>
                     
                      </div>
                      @endforeach
-                  @endforeach  
+                  @endforeach 
+                  @endif 
                   </div>
                </div>
             </div>
@@ -194,5 +215,11 @@
              width: 550,
              position: 'right'
          });
+</script>
+<script type="text/javascript" charset="utf-8" async defer>
+   $(document).ready(function(){
+      
+           
+   });
 </script>
 @endsection

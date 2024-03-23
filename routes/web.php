@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\rolesController;
 use App\Http\Controllers\Ajax\seachController;
 use App\Http\Controllers\Frontend\homeController;
 use App\Http\Controllers\Admin\tabsController;
+use App\Http\Controllers\Frontend\loginController;
+use App\Http\Controllers\Admin\cartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,6 +134,8 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 
 });
 
+
+//login admin
 Route::get('/error',[adminController::class,'error'])->name('error');
 Route::get('/admin',[adminController::class,'dashboard'])->name('dashboard');
 Route::post('/adminlogin',[adminController::class,'login'])->name('dashboardLogin');
@@ -140,6 +145,23 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 
 /*FRONTEND--------
 ------------------*/
+Route::group(['prefix'=>'login'], function () {
+	Route::get('/', [loginController::class,'login'])->name('dang-nhap');
+	Route::post('/loginSubmit', [loginController::class,'loginSubmit'])->name('loginSubmit'); 
+	Route::post('/logout', [loginController::class,'logout'])->name('logoutSubmit'); 
+	//đăng ký
+	Route::post('/resgiter', [loginController::class,'resgiter'])->name('resgiterPut');
+});
+
+/*Shopping-carts*/
+Route::group(['prefix'=>'cart'], function () {
+	Route::get('/', [cartController::class,'index'])->name('cart.index');
+	Route::post('/cartAdd', [cartController::class,'addCart'])->name('cart.add');
+	Route::put('/cartUpdate/{id}', [cartController::class,'update'])->name('cart.update');
+	Route::delete('/cartdelete/{id}', [cartController::class,'delete'])->name('cart.delete');
+	Route::post('/cartDestroy',[cartController::class,'destroy'])->name('cart.destroy');
+});
+   
 Route::get('/', [homeController::class,'index'])->name('home.index');
 Route::get('{slug}', [homeController::class,'view'])->name('view');
-Route::get('{page}/{slug}', [homeController::class,'product_Details'])->name('product_Details');    
+Route::get('{page}/{slug}', [homeController::class,'product_Details'])->name('product_Details'); 

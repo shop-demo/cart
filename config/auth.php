@@ -40,9 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        
         'customers' => [
             'driver' => 'session',
             'provider' => 'customers',
+        ],
+        
+        'cusFrontend' => [
+            'driver' => 'session',
+            'provider' => 'cusFrontend',
         ],
     
 
@@ -76,6 +82,10 @@ return [
              'driver' => 'eloquent',
              'model' => App\Models\Admin\customesModel::class,
          ],
+         'cusFrontend' => [
+             'driver' => 'eloquent',
+             'model' => App\Models\Admin\customesModel::class,
+         ],
 
     ],
 
@@ -102,6 +112,12 @@ return [
             'throttle' => 60,
         ],
         'customers' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'cusFrontend' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

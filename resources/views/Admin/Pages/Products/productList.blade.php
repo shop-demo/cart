@@ -96,6 +96,7 @@
                   <th scope="col">Price</th>
                   <th scope="col">Sale</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Categoory</th>
                   <th scope="col">created_at</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Action</th>
@@ -122,6 +123,7 @@
                     @endif
                   </form>  
                   </td>
+                  <td>{{$product->pro_category->name}}</td>
                   <td>{{$product->created_at == null ? '' : $product->created_at->format('m-d-Y')}}</td>
                   <td>{{$product->quantity}}</td>
                   <td>

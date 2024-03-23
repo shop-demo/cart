@@ -28,6 +28,7 @@ class CustomersMiddleware
 
          // Lấy thông tin người dùng
         $user = Auth::guard('customers')->user();
+        
       
         //route hiện tại
         $route = $request->route()->getName();

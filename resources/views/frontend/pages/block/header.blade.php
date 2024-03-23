@@ -31,6 +31,7 @@
             </div>
          </div>
          <!-- end header top -->
+ 
          <!-- header bottom -->
          <div class="header_bottom">
             <div class="container">
@@ -65,19 +66,33 @@
                                  </ul>
                               </li>
                               <li>
-                                 <a href="">Services</a>
+                                 <a href="">Giỏ hàng</a>
                                  <ul>
-                                    <li><a href="">Services Detail</a></li>
+                                    <li><a href="{{route('cart.index')}}" data-product-url=" {{route('cart.index')}}">Danh sách</a></li>
                                  </ul>
                               </li>
                               <li>
-                                 <a href="">Blog</a>
+                                 @if(auth()->guard('cusFrontend')->check())
+                                    <a href="" style="text-transform: capitalize;">Chào bạn:{{auth()->guard('cusFrontend')->user()->name}}</a>
+                                 @else
+                                    <a href="{{route('dang-nhap')}}" class="btn-link login_btn">Đăng nhập</a>
+                                 @endif
+                                
                                  <ul>
-                                    <li><a href="">Blog Detail</a></li>
+                                   @if(auth()->guard('cusFrontend')->check())
+                                    <li>
+                                    <form action="" method="POST" id="form_logout">
+                                       @csrf
+                                    <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn">Logout</a>
+                                    </form>
+                                    </li>
+                                    
+                                   @endif
+                                    
                                  </ul>
-                              </li>
+                              </li>                                    
                              
-                              <li><a href="contact.html">Contact</a></li>
+                              <li><a href="">Contact</a></li>
                            </ul>
                         </div>
                         <div class="search_icon">

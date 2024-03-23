@@ -46,7 +46,13 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" integrity="sha512-C8Movfk6DU/H5PzarG0+Dv9MA9IZzvmQpO/3cIlGIflmtY3vIud07myMu4M/NTPJl8jmZtt/4mC9bAioMZBBdA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
        <!--end owlCarouse css -->
-       @yield('css')
+       <!-- css sweetalert -->
+     
+      <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.min.css " rel="stylesheet">
+       <!-- end css sweetalert -->
+
+      @yield('css')
+
    </head>
    <body id="default_theme" class="home_1">
      
@@ -263,8 +269,14 @@
       <script src="{{url('public/frontend')}}/js/hizoom.js"></script>
       <!-- Bootstrap Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-      @yield('js')
+      <script src="{{url('public/frontend')}}/style/js/cart.js" type="text/javascript" charset="utf-8" async defer></script>
+      <!-- Bootstrap sweetalert -->
+      <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js "></script>
+      <!-- end Bootstrap sweetalert -->
+        @yield('js')
 
+      
+     
    </body>
 
 <!-- Mirrored from html.design/demo/furnish/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Sep 2023 03:59:37 GMT -->

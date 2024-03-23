@@ -22,7 +22,7 @@
          </div>
       </div>
       <!-- end inner page banner -->
-     @php  @endphp
+     @php @endphp
       <!-- section -->
       <div class="section padding_layout_1 product_list_main">
          <div class="container">
@@ -51,6 +51,16 @@
                                  @endif
                                  </p>
                               </div>
+                              <!--bttom mua ngay -->
+                              <div class="d-flex justify-content-around" style="margin-top: 15px;">
+                              <p class="fs-4">status</p>
+                              <form action="" method="POST">
+                              @csrf
+                              <input type="hidden" value="{{route('cart.add')}}" name="url" class="input_route"/>
+                              <p><button type="button" class="btn-link bt_addCart" data-product-id="{{$item->id}}" style="border: none;" >Mua ngay</button></p>
+                              <!--end bttom mua ngay -->
+                              </div>
+                              </form>
                            </div>
                         </div>
                      </div>
@@ -78,6 +88,16 @@
                                  @endif
                                  </p>
                               </div>
+                              <!--add mua ngay -->
+                              <div class="d-flex justify-content-around" style="margin-top: 15px;">
+                                 <p class="fs-4">status</p>
+                                 <form action="" method="post">
+                                 @csrf
+                                 <input type="hidden" value="{{route('cart.add')}}" name="url" class="input_route"/>
+                                 <p><button type="" class="btn-link bt_addCart" data-product-id="{{$val->id}}" style="border: none;">Mua ngay</button></p>
+                                 <form>
+                              </div>
+                              <!-- end add mua ngay -->
                            </div>
                         </div>
                      </div>

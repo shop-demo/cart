@@ -1,13 +1,9 @@
 @extends('frontend.client')
 @section('main')
+
       <!-- slider -->
        @include('frontend.pages.block.slider')
       <!-- end slider -->
-
-      @php 
-           
-           
-       @endphp 
       <!-- section sản phẩm nổi bật-->
        <div class="section padding_layout_1 portfolio_section">
          <div class="container">
@@ -53,17 +49,26 @@
                            <div class="starratin s-star">
                               <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
                            </div>
-                           <div class="product_price ">
+                           <div class="product_price">
                               <p>
                               @if($val->sale >0 && $val->sale < $val->price)
                               <span class="old_price o-price">{{ number_format($val->price)}} vnđ</span></br> 
                               <span class="new_price n-price">{{number_format($val->sale)}} vnđ</span>
                               @else
-                              
                                <span class="old_price o-price" style="text-decoration:none; font-weight: 600;">{{number_format($val->price) }} vnđ</span> 
                               @endif
                               </p>
                            </div>
+                           <!--add mua ngay -->
+                           <div class="d-flex justify-content-around" style="margin-top: 15px;">
+                              <p class="fs-4">status</p>
+                              <form action="" method="post">
+                              @csrf
+                              <input type="hidden" value="{{route('cart.add')}}" name="url" class="input_route"/>
+                              <p><button type="" class="btn-link bt_addCart" data-product-id="{{$val->id}}" style="border: none;">Mua ngay</button></p>
+                              <form>
+                           </div>
+                           <!-- end add mua ngay -->
                         </div>
                      </div>
                   </div>
