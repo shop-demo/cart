@@ -142,27 +142,6 @@
 
          }); //btn login
 
-          /*LOGOUT*/
-          $('.logout_btn').on('click',function(e){
-            e.preventDefault();
-           
-              var _href = $(this).attr('href');
-              var _token = $('input[name ="_token"]').val();
-              
-            
-            //gan vào action
-            $('#form_logout').attr('action',_href);
-
-            if(confirm("bạn có chắc thoát khỏi trang không ?")){
-
-             $('#form_logout').submit();
-            
-            }
-
-
-
-          });//btn logout
-
           /*resgiter*/
           $('#formRegister').on('submit',function(ev){
             ev.preventDefault();

@@ -82,7 +82,8 @@ class loginController extends Controller
     public function Logout(Request $request)
     {
       
-       $logoutName = auth()->guard('cusFrontend')->logout();
+      $logout = auth()->guard('cusFrontend')->logout();
+     
        return redirect()->route('home.index');
     }  
 //

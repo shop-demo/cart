@@ -199,8 +199,53 @@
 
 
     //oredr
-    $('#order').on('click',function(){
-        alert(123);
+    $('.btn-order').on('click',function(e){
+     e.preventDefault();
+      var _rou     = $(this).data('url-order');
+      var _name    = $('.inputName').val();
+      var _email   = $('.inputEmail').val();
+      var _mobile  = $('.inputMoble').val();
+      var _address = $('.inputAddress').val();
+      var _note    = $('.note').val();
+      var _token = $('input[name="_token"]').val();
+    
+      $('.err').text('');
+
+                     $.ajax({
+                            type: 'PUT',
+                            url: _rou,
+                            data:{
+                              name:_name,
+                              email:_email,
+                              mobile:_mobile,
+                              address:_address,
+                              note:_note,
+                              _token:_token
+
+                            },
+                            success: function(res) {
+                              
+                              if(res.error){
+                                for(var key in res.error) {
+                                  var index = parseInt(key); // Chuyển key từ string sang số nguyên
+                                  var errorMessage = res.error[key]; // Thông báo lỗi
+                                  // Hiển thị thông báo lỗi tương ứng với chỉ số index
+                                  $('.loi_').eq(index).text(errorMessage);
+                                }
+                              }
+                               if(res.data){
+                                console.log(res.data);
+                              }
+                              
+                            
+                            }
+                           
+                        });
+
+
+
+
+
     });
  
 

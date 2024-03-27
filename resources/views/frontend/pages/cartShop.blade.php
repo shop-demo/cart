@@ -45,15 +45,41 @@
   color: #fff;
   border: none;
 }
-#oreder{
-  display: none;
+.btn-order{
+  font-size: 15px;
+   font-weight: 600;
+   min-width: auto;
+   padding: 0px 15px;
+   height: 45px;
+   line-height: 45px;
+   margin: 33px 0 0 0;
+   background: #d7bb3e;
+   transition: ease all 0.5s;
+   border: none;
+   color: #333;
+   cursor: pointer;
+   min-width: 120px;
 }
+.btn-order:hover{
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+}
+.checkoutSection{
+  padding: 0;
+}
+.err{
+  color: red;
+  margin-top: 1.2rem;
+}
+
 
 </style>
 @endsection
 
 @section('main')
-@php @endphp
+@php  @endphp
 
 <div class="section padding_layout_1 Shopping_cart_section">
    <div class="container">
@@ -122,7 +148,7 @@
 
                 <div class="row">
                 <!-- button xóa hết-->
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <form action="{{route('cart.destroy')}}" method="Post" id="formDeleteAll">
                        @csrf
                        <button class="btnDelete"  type="submit" >DeleteAll</button>
@@ -130,8 +156,8 @@
                   </div>
                  <!-- end button xóa hết-->
                  <!-- Thông báo tổng tiền-->
-                  <div class="col-md-6">
-                    <div class="shopping-cart-cart">
+                  <div class="col-md-8">
+                    <div class="shopping-cart-cart" style="max-width: 100%;">
                      <table>
                         <tbody>
                            <tr class="head-table">
@@ -165,8 +191,13 @@
                               </td>
                            </tr>
                            <tr>
-                              <td><button type="button" class="button">Tiếp tục mua sắm</button></td>
-                              <td><button class="button btn_order" id="order" type="button">Đặt hàng</button></td>
+                              <td><button type="button" class="button">Tiếp tục mua hàng</button></td>
+                              @if(auth()->guard('cusFrontend')->user())
+                              <td><button class="button btn_order" data-bs-toggle="collapse" type="button" data-bs-target="#order"> Tiếp tục đặt hàng</button></td>
+                              @else
+                              <td><a href="{{route('dang-nhap')}}" class="button btn_order">Bạn đăng nhập để đặt hàng</a></td>
+                              @endif
+                              
                            </tr> 
                         </tbody>
                      </table>
@@ -183,45 +214,45 @@
 <!-- Cart list-->
 <!--order -->
 <!-- end inner page banner -->
-      <div class="section padding_layout_1 checkout_section">
-         <div class="container" id="oreder">
+      <div class="section padding_layout_1 checkout_section checkoutSection">
+         <div class="container collapse" id="order">
           
            <!-- ORDER-->
+          @if(auth()->guard('cusFrontend')->user())
             <div class="row">
                <div class="col-md-8">
                   <div class="checkout-form">
-                   <form class="row g-3">
-                        <div class="col-md-6">
-                          <label for="inputEmail4" class="form-label ">Họ tên </label>
-                          <input type="text" class="form-control" id="inputEmail4">
+                  <p class="h5 pb-1" style="display:inline-block;font-weight: 600; color: #333; border-bottom: 2px solid #c4c4c4; margin-bottom: 25px">Thủ tục thanh toán - checkout</p>
+                   <form class="row g-3" action="" method="POST">
+                      @csrf @method('PUT')
+                        <div class="col-md-12">
+                          <label for="n_input" class="form-label ">Họ tên </label>
+                          <input type="text" class="form-control inputName" id="n_input" name="name" value="">
+                          <p class="loi_ err"></p>
                         </div>
-                        <div class="col-md-6">
-                          <label for="inputPassword4" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="inputPassword4">
+                        <div class="col-md-12">
+                          <label for="e_input" class="form-label">Email</label>
+                          <input type="email" class="form-control inputEmail" id="e_input" value="" name="email">
+                          <p class="loi_ err"></p>
                         </div>
                         
-                        <div class="col-md-6" style="padding: 10px; 0">
-                          <label for="inputCity" class="form-label">Mobile</label>
-                          <input type="text" class="form-control" id="inputCity">
+                        <div class="col-md-12" style="padding: 10px; 0">
+                          <label for="m_input" class="form-label">Mobile</label>
+                          <input type="text" class="form-control inputMoble" id="m_input" name="mobile">
+                          <p class="loi_ err"></p>
                         </div>
                         <div class="col-12" style="padding: 10px; 0">
-                          <label for="inputAddress" class="form-label">Địa chỉ</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                          <label for="address_input" class="form-label">Địa chỉ</label>
+                          <input type="text" class="form-control inputAddress" id="address_input" name="address" placeholder="Nhập địa chỉ" value="">
+                          <p class="loi_ err"></p>
                         </div>
                         <div class="col-12" style="padding: 10px; 0">
-                          <label for="inputAddress2" class="form-label">Address 2</label>
-                          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="col-12" style="padding: 10px; 0">
-                          <div class="form-check" style="padding: 10px; 0">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                              Check me out
-                            </label>
-                          </div>
+                          <label for="note_input2" class="form-label">Ghi chú</label>
+                          <textarea class="form-control note" name="note"></textarea> 
+                          <p class="loi_ err"></p>
                         </div>
                         <div class="col-12">
-                          <button type="submit" class="btn btn-primary">Sign in</button>
+                          <button type="submit" class="btn-order" data-url-order="{{route('cart.order')}}">Order</button>
                         </div>
                     </form>
                   </div>
@@ -265,6 +296,8 @@
                   </div>
                </div>
             </div><!-- end order-->
+            @endif
+            
 
          </div>
       </div>

@@ -273,6 +273,43 @@
       <!-- Bootstrap sweetalert -->
       <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js "></script>
       <!-- end Bootstrap sweetalert -->
+      
+      <!-- logout -->
+      <script type="text/javascript" charset="utf-8" async defer>
+        $(document).ready(function(){
+          /*LOGOUT*/
+          $('.logout_btn').on('click',function(e){
+            e.preventDefault();
+           
+              var _href = $(this).attr('href');
+              var _token = $('input[name ="_token"]').val();
+            //gan vào action
+            $('#form_logout').attr('action',_href);
+           
+            // Xác nhận từ người dùng trước khi thực hiện xóa
+              Swal.fire({
+                title: "Bạn có chắc logout tài khoản ?",
+                text: "Bạn không thể quay lại nếu ra khỏi nó",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                      // Nếu người dùng chấp nhận , gọi hàm để thực hiện logout
+                       $('#form_logout').submit();
+                    }
+                });
+
+
+          });//btn logout
+       
+        });
+
+      </script>
+       <!-- logout -->  
+      
         @yield('js')
 
       

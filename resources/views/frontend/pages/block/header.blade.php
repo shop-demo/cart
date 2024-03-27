@@ -83,7 +83,7 @@
                                     <li>
                                     <form action="" method="POST" id="form_logout">
                                        @csrf
-                                    <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn">Logout</a>
+                                    <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn" >Logout</a>
                                     </form>
                                     </li>
                                     

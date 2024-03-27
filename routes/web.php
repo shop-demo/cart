@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\homeController;
 use App\Http\Controllers\Admin\tabsController;
 use App\Http\Controllers\Frontend\loginController;
 use App\Http\Controllers\Admin\cartController;
+use App\Http\Controllers\Admin\checkoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,7 +144,7 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 
 
 
-/*FRONTEND--------
+/*FRONTEND login logout--------
 ------------------*/
 Route::group(['prefix'=>'login'], function () {
 	Route::get('/', [loginController::class,'login'])->name('dang-nhap');
@@ -161,6 +162,12 @@ Route::group(['prefix'=>'cart'], function () {
 	Route::delete('/cartdelete/{id}', [cartController::class,'delete'])->name('cart.delete');
 	Route::post('/cartDestroy',[cartController::class,'destroy'])->name('cart.destroy');
 });
+/*Shopping-order*/
+Route::group(['prefix'=>'order'], function () {
+	Route::put('/', [checkoutController::class,'order'])->name('cart.order');
+	
+});
+
    
 Route::get('/', [homeController::class,'index'])->name('home.index');
 Route::get('{slug}', [homeController::class,'view'])->name('view');
