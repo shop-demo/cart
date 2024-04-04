@@ -12,4 +12,13 @@ class order_detailModel extends Model
     protected $fillable =['name','orders_id','products_id','price','sale','quantity','status'];
     protected $primariKey ='id';
     public $timestamps = true;
+
+
+    // Khai báo mối quan hệ: Một chi tiết đơn hàng thuộc về một đơn hàng
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Admin\checkoutModel', 'orders_id', 'id');
+    }
+	
+
 }

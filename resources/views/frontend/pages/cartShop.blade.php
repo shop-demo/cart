@@ -221,6 +221,13 @@
           @if(auth()->guard('cusFrontend')->user())
             <div class="row">
                <div class="col-md-8">
+                
+                @if(session('success_message'))
+                    <div class="alert alert-success">
+                        {{ session('success_message') }}
+                    </div>
+                @endif
+                 
                   <div class="checkout-form">
                   <p class="h5 pb-1" style="display:inline-block;font-weight: 600; color: #333; border-bottom: 2px solid #c4c4c4; margin-bottom: 25px">Thủ tục thanh toán - checkout</p>
                    <form class="row g-3" action="" method="POST">

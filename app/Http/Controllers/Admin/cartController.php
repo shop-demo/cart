@@ -7,6 +7,7 @@ use App\Models\Admin\cartModel;
 use App\Models\Admin\productsModel;
 use App\Thuvien\CartHelper;
 use Illuminate\Http\Request;
+use Auth;
 
 class cartController extends Controller
 {

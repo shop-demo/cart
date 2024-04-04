@@ -165,6 +165,8 @@ Route::group(['prefix'=>'cart'], function () {
 /*Shopping-order*/
 Route::group(['prefix'=>'order'], function () {
 	Route::put('/', [checkoutController::class,'order'])->name('cart.order');
+	Route::get('/assert_order/{id}/{token_order}', [checkoutController::class,'assert_order'])->name('cart.assert_order');
+
 	
 });
 

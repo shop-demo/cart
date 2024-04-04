@@ -233,8 +233,18 @@
                                   $('.loi_').eq(index).text(errorMessage);
                                 }
                               }
-                               if(res.data){
-                                console.log(res.data);
+                               if(res.data === 'success'){
+                                 Swal.fire({
+                                  title: "Đặt hàng thành công !",
+                                  text: "Bạn vui lòng kiểm tra email để xác nhận đơn hàng.",
+                                  icon: "success"
+                                }).then((result) => {
+                                    // Sau khi hiển thị thông báo, làm mới trang
+                                    location.reload();
+                                  });
+                                
+                              }else{
+                                alert('Đặt hàng lỗi!');
                               }
                               
                             
@@ -242,11 +252,9 @@
                            
                         });
 
-
-
-
-
     });
+    //xác nhận đơn hàng
+    
  
 
 

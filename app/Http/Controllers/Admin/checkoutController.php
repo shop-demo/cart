@@ -87,10 +87,30 @@ class checkoutController extends Controller
                     }
 
                 }
-              
-               return response()->json(['data'=>'success']);
-                
+              //gủi email
 
+                $email_cus = $request->email;
+                $name_cus = Auth::guard('cusFrontend')->user()->name;
+
+                Mail::send('emails.infoEmail',[
+                'name'=> $name_cus,
+                'donhang'=> $order,
+                'shopping'   => $CartHelper->items,
+                'total_price' =>$CartHelper->total_price,
+
+                ], function($email) use($email_cus,$name_cus){
+                
+                $email->subject('Email đặt hàng');
+                $email->to($email_cus,$name_cus);
+                $email->from('info.haianhh@gmail.com');
+            
+                });
+                
+                session(['cart'=>'']);
+                return response()->json([
+                'data'=>'success',
+                ]);
+                
         }
 
     }
@@ -101,9 +121,37 @@ class checkoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function assert_order(Request $request,CartHelper $CartHelper,$id,$token_order)
     {
-        //
+      
+        $assert_order = checkoutModel::find($id);
+        $order_detail = order_detailModel::where('orders_id',$id)->get()->toArray();
+        $name_khachhang = $assert_order->name;
+        $mail_khachhang = $assert_order->email;
+        if($assert_order->token === $token_order){
+         $assert_order->update(['status'=>1]); 
+          Mail::send('emails.assert_order',[
+            'name'=> $name_khachhang,
+            'email'=>$mail_khachhang,
+            'donhang'=> $assert_order,
+            'order_detail'   => $order_detail
+            
+            ], function($email) use($mail_khachhang,$name_khachhang){
+                
+            $email->subject('Email đặt hàng xác nhận thành công');
+            $email->to($mail_khachhang,$name_khachhang);
+            $email->from('info.haianhh@gmail.com');
+            });
+
+           // Lưu thông báo vào Session
+        $request->session()->flash('success_message', 'Đơn hàng đã được xác nhận thành công!');
+
+        //return redirect()->route('cart.order');
+        
+        }else{
+            echo "error";
+        }
+       
     }
 
     /**
