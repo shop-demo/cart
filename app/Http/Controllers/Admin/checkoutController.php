@@ -143,13 +143,12 @@ class checkoutController extends Controller
             $email->from('info.haianhh@gmail.com');
             });
 
-           // Lưu thông báo vào Session
-        $request->session()->flash('success_message', 'Đơn hàng đã được xác nhận thành công!');
-
-        //return redirect()->route('cart.order');
+        return view('frontend.pages.info_order');
+        
         
         }else{
-            echo "error";
+            // Thêm xử lý cho trường hợp token không hợp lệ
+            return redirect()->route('cart.index')->with('error', 'Token không hợp lệ');
         }
        
     }
