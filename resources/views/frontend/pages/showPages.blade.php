@@ -1,7 +1,7 @@
 @extends('frontend.client')
 @section('main')
 <!-- inner page banner -->
-      <div id="inner_banner" class="section inner_banner_section">
+      <div id="inner_banner" class="section inner_banner_section" style="margin-top:150px;">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -22,10 +22,16 @@
          </div>
       </div>
       <!-- end inner page banner -->
-     @php @endphp
+    
       <!-- section -->
       <div class="section padding_layout_1 product_list_main">
+        
          <div class="container">
+           <!-- thong bao -->
+           @if(session('message'))
+           @include('frontend.pages.block.mgs')
+           @endif
+           <!-- end thong bao --> 
             <div class="row">
                <div class="col-md-12">
                   <div class="row">
@@ -113,7 +119,9 @@
          </div>
       </div>
       <!-- end section -->
-      
+     <!-- Modal search bar-->
+     @include('frontend.pages.block.seach')
+      <!-- End Model search bar -->
 
 
 

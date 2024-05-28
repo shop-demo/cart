@@ -3,6 +3,11 @@
 	border: 5px solid #f1f1f1;
 	
 }
+.img-hi2{
+  width: 100%;
+  height: auto;
+}
+
 .p-productDetail{
 	background: #f8f9fa;
 }
@@ -14,6 +19,12 @@
 }
 .n-price{
 	color: #333;
+  
+}
+span.new_price.n-price{
+  font-size: 25px !important;
+  font-weight: 600;
+ 
 }
 .s-star{
 	color: #333;
@@ -39,3 +50,110 @@
 	background: #d7bb3e;
 	font-size: 18px;
 	font-weight: 600;*/
+.fixed-header {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.seach-nav{
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .iput-seach{
+      width: 100%;
+      display: block;
+      padding: 1rem ;
+      border-radius:0;
+      
+    }
+    
+    .s-btn:hover{
+      background: green;
+
+    }
+    .fa-search{
+      font-size: 20px;
+    }
+    
+    .list{
+      width: 100%;
+      height: auto;
+     
+    }
+    .s-img{
+      width:10%;
+      height: auto;
+      padding-right: 0.5rem;
+    }
+    .a-item{
+      padding-left: 0.5rem;
+    }
+    
+    /*relay------------------
+    ---------------------------*/
+    .reply{
+      background: #ddd !important;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-style: 15px;
+      color: #333!important;
+      float: right;
+      margin-top: 1rem !important;
+    }
+   .reply:hover{
+    cursor: pointer !important;
+    background: none !important;
+    border: 1px solid blue !important;
+    }
+    .v-textarea{
+      margin-top: 1rem !important;
+    }
+    .btnRep:hover{
+       cursor: pointer !important;
+       color: blue !important;
+       background: #ccc;
+       padding: 8px 10px;
+
+    }
+    
+    .formRep{
+      display: none;
+    }
+    
+    img.img-hi2.show_imge:hover{
+    cursor: pointer !important;
+    
+    }
+
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .pc{
+        display: none !important;
+
+
+      }
+      .product-heading{
+        margin-top: 20px !important;
+
+      }
+
+    }
+    
+    @media (min-width: 992px) {
+      .mob{
+        display: none !important;
+        padding: -5px !important;
+      }
+       
+    }
+
+    @media (max-width: 767px) {
+      .pc{
+        display: none !important;
+         padding: -5px !important;
+      }
+    }

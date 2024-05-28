@@ -101,7 +101,6 @@
                   </div>
                   
                    <!--show avatar -->
-                  
                   <!-- The Modal -->
                   <div class="modal" id="myModal">
                     <div class="modal-dialog modal-xl">

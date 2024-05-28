@@ -36,7 +36,7 @@
       <!--home -->
       <link rel="stylesheet" type="text/css" href="{{url('public/frontend')}}/style/css/home.css" />
       <!-- zoom effect -->
-      <link rel='stylesheet' href="{{url('public/frontend')}}/css/hizoom.css">
+      
       <!--[if lt IE 9]>
      
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -50,6 +50,7 @@
      
       <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.min.css " rel="stylesheet">
        <!-- end css sweetalert -->
+       
 
       @yield('css')
 
@@ -280,9 +281,9 @@
           /*LOGOUT*/
           $('.logout_btn').on('click',function(e){
             e.preventDefault();
-           
               var _href = $(this).attr('href');
               var _token = $('input[name ="_token"]').val();
+             
             //gan vào action
             $('#form_logout').attr('action',_href);
            
@@ -304,16 +305,20 @@
 
 
           });//btn logout
-       
+
+
+
         });
 
       </script>
-       <!-- logout -->  
-      
-        @yield('js')
+      <!-- login -->  
+     <script src="{{url('public/frontend')}}/style/js/login.js" type="text/javascript" charset="utf-8" async defer></script>
+      <!-- end login --> 
+     <!-- logout -->  
+     <script src="{{url('public/frontend')}}/style/js/seach.js" type="text/javascript" charset="utf-8" async defer></script>
+    
+     @yield('js')
 
-      
-     
    </body>
 
 <!-- Mirrored from html.design/demo/furnish/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Sep 2023 03:59:37 GMT -->

@@ -1,6 +1,5 @@
 @extends('frontend.client')
 @section('main')
-
       <!-- slider -->
        @include('frontend.pages.block.slider')
       <!-- end slider -->
@@ -216,15 +215,15 @@
          </div>
       </div>
       <!-- end section -->
-      <!-- section -->
+      <!-- section khách hàng nói gì-->
       <div class="section padding_layout_1 testmonial_section white_fonts">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="full">
                      <div class="main_heading text_align_center">
-                        <h2 style="text-transform: none;">What Clients Say?</h2>
-                        <p class="large">Here are testimonials from clients..</p>
+                        <h2 style="text-transform: none;">Khách hàng nói gì?</h2>
+                        <p class="large">Đây là lời chứng thực từ khách hàng..</p>
                      </div>
                   </div>
                </div>
@@ -289,29 +288,8 @@
          </div>
       </div>
       <!-- end section -->
-      <!-- Modal -->
-      <div class="modal fade" id="search_bar" role="dialog">
-         <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-               </div>
-               <div class="modal-body">
-                  <div class="row">
-                     <div class="col-lg-8 col-md-8 col-sm-8 offset-lg-2 offset-md-2 offset-sm-2 col-xs-10 col-xs-offset-1">
-                        <div class="navbar-search">
-                           <form action="#" method="get" id="search-global-form" class="search-global">
-                              <input type="text" placeholder="Type to search" autocomplete="off" name="s" id="search" value="" class="search-global__input">
-                              <button class="search-global__btn"><i class="fa fa-search"></i></button>
-                              <div class="search-global__note">Begin typing your search above and press return to search.</div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+      <!-- Modal search bar-->
+     
+     @include('frontend.pages.block.seach')
       <!-- End Model search bar -->
 @endsection

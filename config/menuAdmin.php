@@ -87,7 +87,32 @@
 
 							]
 						],
+						/*Cart-order*/
+						[
+							'name'=>'Cart',
+							'route'=>'admin.orderList',
+							'items'=>[
+									['name'=>'List Order',
+									 'route'=>'admin.orderList',	
+									],
+																
 
+							]
+						],
+
+						/*Comment*/
+
+						[
+							'name'=>'Comment',
+							'route'=>'admin.commentList',
+							'items'=>[
+									['name'=>'List Comment',
+									 'route'=>'admin.commentList',	
+									],
+																
+
+							]
+						],
 			
 					
 

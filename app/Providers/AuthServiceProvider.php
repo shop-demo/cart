@@ -28,9 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-    
 
+       
        app(Gate::class)->before(function(Authorizable $auth,$route){
+
+        
+            // Nếu không phải là admin, tiếp tục kiểm tra quyền theo route
             
             if(method_exists($auth, 'checkQuyen')){
 

@@ -81,8 +81,14 @@
 @section('main')
 @php  @endphp
 
-<div class="section padding_layout_1 Shopping_cart_section">
+
+<div class="section padding_layout_1 Shopping_cart_section" style="margin-top:100px;">
    <div class="container">
+    <!-- thong bao -->
+    @if(session('message'))
+    @include('frontend.pages.block.mgs')
+    @endif
+    <!-- end thong bao --> 
       <div class="row">
          <div class="col-sm-12 col-md-12">
             <div class="product-table">
@@ -233,7 +239,7 @@
                       @csrf @method('PUT')
                         <div class="col-md-12">
                           <label for="n_input" class="form-label ">Họ tên </label>
-                          <input type="text" class="form-control inputName" id="n_input" name="name" value="">
+                          <input type="text" class="form-control inputName" id="n_input" name="name_user" value="">
                           <p class="loi_ err"></p>
                         </div>
                         <div class="col-md-12">
@@ -307,6 +313,9 @@
 
          </div>
       </div>
+     <!-- Modal search bar-->
+     @include('frontend.pages.block.seach')
+     <!-- End Model search bar -->
 
 @endsection  
 <!-- end section -->

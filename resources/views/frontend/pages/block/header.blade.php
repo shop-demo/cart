@@ -1,5 +1,5 @@
  <!-- header -->
-      <header id="default_header" class="header_style_1">
+      <header id="default_header" class="header_style_1" style="position: fixed; width: 100; width: 100%; z-index: 100">
          <!-- header top -->
          <div class="header_top">
             <div class="container">
@@ -33,12 +33,12 @@
          <!-- end header top -->
  
          <!-- header bottom -->
-         <div class="header_bottom">
+         <div class="header_bottom" style="background: #f1f1f1;">
             <div class="container">
-               <div class="row">
+               <div class="row ">
                   <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                      <!-- logo start -->
-                     <div class="logo"><a href="index.html"><img src="{{url('public/Frontend')}}/images/logos/logo.png" alt="logo" /></a></div>
+                     <div class="logo"><a href="home.index"><img src="{{url('public/Frontend')}}/images/logos/logo.png" alt="logo" /></a></div>
                      <!-- logo end -->
                   </div>
                   <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -58,7 +58,7 @@
                                  </ul>
                               </li>
                               <li>
-                                 <a href="shop.html">Shop</a>
+                                 <a href="">Shop</a>
                                  <ul>
                                     @foreach($shopList as $key=>$shop)
                                     <li><a href="{{route('view',['slug'=>$shop->code])}}">{{$shop->name}}</a></li>
@@ -66,7 +66,11 @@
                                  </ul>
                               </li>
                               <li>
-                                 <a href="">Giỏ hàng</a>
+                                 @if($cartShop)
+                                 <a href="">Giỏ hàng({{$cartShop->total_quantity}})</a>
+                                 @else
+                                 <a href="">Giỏ hàng(0)</a>
+                                 @endif
                                  <ul>
                                     <li><a href="{{route('cart.index')}}" data-product-url=" {{route('cart.index')}}">Danh sách</a></li>
                                  </ul>
@@ -82,8 +86,8 @@
                                    @if(auth()->guard('cusFrontend')->check())
                                     <li>
                                     <form action="" method="POST" id="form_logout">
-                                       @csrf
-                                    <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn" >Logout</a>
+                                     @csrf
+                                    <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn">Logout</a>
                                     </form>
                                     </li>
                                     
@@ -97,7 +101,7 @@
                         </div>
                         <div class="search_icon">
                            <ul>
-                              <li><a href="#" data-toggle="modal" data-target="#search_bar"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                              <li><a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                            </ul>
                         </div>
                      </div>

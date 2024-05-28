@@ -9,6 +9,11 @@ use App\Models\Admin\customesModel;
 use App\Models\Admin\productsModel;
 use App\Models\Admin\tabsModel;
 use App\Models\Admin\tabs_productsModel;
+use App\Models\Admin\order_detailModel;
+use App\Models\Admin\checkoutModel;
+use App\Models\Admin\ratingModel;
+use App\Models\Admin\commentModel;
+use Illuminate\Support\Facades\Validator;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -66,18 +71,113 @@ class homeController extends Controller
  
   public function product_Details(Request $request,$page,$slug){
 
-      //chi tiết sản phẩm
-     $productDetail = productsModel::where('code',$slug)->first();
+    //chi tiết sản phẩm
+    $productDetail = productsModel::where('code',$slug)->first();
+    
+    //get sanpham cùng tabs
+    $t_pro = $productDetail->tabs;
 
-      //get sanpham cùng tabs
-     $t_pro = $productDetail->tabs;
+    //comment product
+    $commProduct = commentModel::where(['product_id'=>$productDetail->id,'reply_id'=>0])->orderBy('id','DESC')->get();
+   
+    //total comm
+    $commProductCount = $productDetail->commPro;
 
-      // Lấy danh sách các sản phẩm trong danh mục phòng khách
+     //REVIEW RATING
+    $productId = $productDetail->id;
+   
+    $ratingSP = round(ratingModel::where('product_id',$productId)->avg('rating_star'));//tổng rating
+   
+    /*kiểm tra người dùng có mua sản phẩm này k?*/
+    $cusOders = new customesModel;//khởi tạo cusMode
 
-     return view('frontend.pages.productDetail',compact('productDetail','t_pro'));
+    return view('frontend.pages.productDetail',compact('productDetail','t_pro','cusOders','ratingSP','commProductCount','commProduct'));
   }
 
+  //seach
+ 
+  public function seach(Request $request){
+    
+    $data_seach = productsModel::seach()->get();
+    
+    return view('frontend.pages.block.listSeach',compact('data_seach'));
+   
+  }
+
+  //rating
+  public function rating(Request $request){
   
+    // Tiếp tục lưu đánh giá nếu đã mua sản phẩm
+    $rating_model = ratingModel::where($request->only('product_id','customes_id'))->first();
+   
+    if($rating_model){
+      
+      ratingModel::where($request->only('product_id','customes_id'))->
+      
+      update($request->only('rating_star'));
+    
+    }else{
+       ratingModel::create($request->only('product_id','customes_id','rating_star'));
+    }
+
+    // return redirect()->back();
+     return response()->json(['data' => true]);
+
+  }
+
+  /*COMMENT-----------------------------------------------*/
+  public function comment(Request $request){
+   
+     $validator = Validator::make($request->all(), [
+          
+          'comment'    => 'required',
+
+          ],[
+
+          'comment.required'=>'comment không được bỏ trống',
+
+          ]);
+
+        if ($validator->fails()) {
+          
+          $errors = $validator->errors();
+
+          return response()->json(['error'=>$validator->errors()->first()]); 
+
+        }else{
+
+          $dataComment = new commentModel;
+          $dataComment->comment = $request->comment;
+          $dataComment->product_id = $request->product_id;
+          $dataComment->customes_id = $request->customes_id;
+          $dataComment->status = $request->status ? $request->status :0;
+          $dataComment->reply_id = $request->reply_id ? $request->reply_id :0;
+          $dataComment ->save();
+          
+             if($dataComment){
+                
+                $commProduct = commentModel::where([
+                  'reply_id'=>0,
+                  'product_id'=>$request->product_id,
+                  'status'=>0])->orderBy('id','DESC')->get();
+              
+               return view('frontend.pages.comment',compact('commProduct'));
+             }
+
+           
+       }
+ 
+ }
+
+  //load comment
+  public function loadComm(Request $request){
+    $commProduct = commentModel::all();
+    return view('frontend.pages.comment',compact('commProduct'));
+  }
+
+
+
+
 
 
 }

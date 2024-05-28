@@ -9,6 +9,7 @@ use App\Models\Admin\categoryModel;
 use App\Models\Admin\productsModel;
 use Illuminate\Pagination\Paginator;
 use App\Thuvien\CartHelper;
+use App\Models\Admin\commentModel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +39,8 @@ class AppServiceProvider extends ServiceProvider
                     'pages'=> categoryModel::where('id_cha',0)->get(),
                     'shopList' =>categoryModel::where('id_cha','<>','0')->get(),
                     'cartShop'=> new CartHelper()
-                   
+                    
+
                 ]);
 
         });

@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\tabsController;
 use App\Http\Controllers\Frontend\loginController;
 use App\Http\Controllers\Admin\cartController;
 use App\Http\Controllers\Admin\checkoutController;
+use App\Http\Controllers\Admin\orderController;
+use App\Http\Controllers\Admin\commentControlle;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +127,42 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	Route::put('/activeTabs/{id}',[activeController::class,'activeTabs'])->name('admin.activeTabs');
 	Route::put('/notActiveTabs/{id}',[activeController::class,'notActiveTabs'])->name('admin.notActiveTabs');
 	/*end Tabs*/
+	
+	/*Cart-order-----------------------------------------------------------
+	----------------------------------------------------------------*/
+	Route::get('/orderList',[orderController::class,'index'])->name('admin.orderList');
+	Route::get('/order_detailView/{id}',[orderController::class,'show'])->name('admin.order_detailView');
+	Route::delete('/orderDelete/{id}',[orderController::class,'delete'])->name('admin.orderDelete');
+	
+	/*end Cart order-----------------------------------------------------------
+	----------------------------------------------------------------*/
+
+	/*comment-----------------------------------------------------------
+	----------------------------------------------------------------*/
+	Route::get('/comment',[commentControlle::class,'index'])->name('admin.commentList');
+	Route::get('/comment/{id}',[commentControlle::class,'show'])->name('admin.commentEdit');
+	Route::put('/commentPut/{id}',[commentControlle::class,'edit'])->name('admin.commentPut');
+	Route::delete('/commentDelete/{id}',[commentControlle::class,'delete'])->name('admin.commentDelete');
+	//comm reply
+	Route::put('/commentRep/{id}',[commentControlle::class,'commRep'])->name('admin.commRep');
+	//edit commRep
+	Route::get('/editRep/{id}',[commentControlle::class,'editCommRep'])->name('admin.editRep');
+	Route::put('/putRep/{id}',[commentControlle::class,'updateCommRep'])->name('admin.putRep');
+	Route::delete('/putRep/{id}',[commentControlle::class,'deleteCommRep'])->name('admin.deleteCommRep');
+	//satus
+	Route::put('/commentActive/{id}',[commentControlle::class,'active'])->name('admin.commentActive');
+	Route::put('/commentNotActive/{id}',[commentControlle::class,'notActive'])->name('admin.commentNotActive');
+	//satus
+	
+	
+	/*end comment-----------------------------------------------------------
+	----------------------------------------------------------------*/
+
+
+
+
+
+
 	//filemanager
 	Route::get('/file',[adminController::class,'filemanager'])->name('admin.filemanager');
 
@@ -148,10 +186,24 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 ------------------*/
 Route::group(['prefix'=>'login'], function () {
 	Route::get('/', [loginController::class,'login'])->name('dang-nhap');
+	
+
 	Route::post('/loginSubmit', [loginController::class,'loginSubmit'])->name('loginSubmit'); 
 	Route::post('/logout', [loginController::class,'logout'])->name('logoutSubmit'); 
 	//đăng ký
 	Route::post('/resgiter', [loginController::class,'resgiter'])->name('resgiterPut');
+
+	/*comment --------------------------
+	------------------------------------*/
+	Route::get('/comment', [homeController::class,'loadComm'])->name('loadComm');  
+	Route::put('/comment', [homeController::class,'comment'])->name('home.comment');
+	
+
+
+	/*comment --------------------------
+	------------------------------------*/  
+
+
 });
 
 /*Shopping-carts*/
@@ -167,10 +219,11 @@ Route::group(['prefix'=>'order'], function () {
 	Route::put('/', [checkoutController::class,'order'])->name('cart.order');
 	Route::get('/assert_order/{id}/{token_order}', [checkoutController::class,'assert_order'])->name('cart.assert_order');
 
-	
 });
 
-   
+//seach
+Route::get('/seach', [homeController::class,'seach'])->name('home.seach');
+Route::post('/rating',[homeController::class,'rating'])->name('home.rating');   
 Route::get('/', [homeController::class,'index'])->name('home.index');
 Route::get('{slug}', [homeController::class,'view'])->name('view');
 Route::get('{page}/{slug}', [homeController::class,'product_Details'])->name('product_Details'); 

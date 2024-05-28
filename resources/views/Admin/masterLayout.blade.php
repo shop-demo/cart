@@ -140,9 +140,9 @@
               <i class="bi bi-circle"></i><span>{{$item['name']}}</span>
             </a>
           </li>
-          
         </ul>
         @endif
+        
         @endforeach
       </li><!-- End Components Nav -->
       @endif

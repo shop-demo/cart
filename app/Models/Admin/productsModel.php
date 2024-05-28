@@ -25,5 +25,21 @@ class productsModel extends Model
         return $this->belongsTo(categoryModel::class,'category_id','id');
      }
 
+     //seach
+      public function scopeSeach($query){
+       
+        $key = request('key');
+        if($key){
+             $query->where('name','like','%'.$key.'%')->where('status', 1);
+        }
+        return $query;
+
+    } 
+    //1comment thuôc 1 sản phẩm
+    public function commPro(){
+      return $this->hasMany('App\Models\Admin\commentModel','product_id','id');
+       
+    }
+    
 
 }

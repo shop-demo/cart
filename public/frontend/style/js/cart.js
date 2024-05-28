@@ -29,7 +29,13 @@
                   title: "Thêm",
                   text: "Sản phẩm đã thêm trong giỏ hàng",
                   icon: "success"
-                 });
+                 }).then((result) => {
+                        // Nếu người dùng nhấn vào nút xác nhận, thực hiện tải lại trang
+                        if (result.isConfirmed) {
+                          location.reload();
+                        }
+                        
+                });
 
               }
           }
@@ -215,7 +221,7 @@
                             type: 'PUT',
                             url: _rou,
                             data:{
-                              name:_name,
+                              name_user:_name,
                               email:_email,
                               mobile:_mobile,
                               address:_address,
@@ -255,7 +261,7 @@
     });
     //xác nhận đơn hàng
     
- 
+  
 
 
   })

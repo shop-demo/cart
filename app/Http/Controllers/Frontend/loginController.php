@@ -17,6 +17,9 @@ class loginController extends Controller
      */
     public function login(Request $request)
     {
+      // Lưu trữ URL trước đó vào session
+        session()->put('previous_url', url()->previous());
+
         return view('frontend.pages.loginFontend');
     }
 
@@ -55,8 +58,8 @@ class loginController extends Controller
                
                 if($login){
                     
-                 
-                 return response()->json(['data'=>$validator->validate()]);
+                
+                 return response()->json(['data'=>true]); //
                 
 
                  }else{
@@ -81,10 +84,8 @@ class loginController extends Controller
      */
     public function Logout(Request $request)
     {
-      
       $logout = auth()->guard('cusFrontend')->logout();
-     
-       return redirect()->route('home.index');
+      return redirect()->back()->with(['message' => 'Bạn vừa Logout tài khoản thành công']);
     }  
 //
     /**
@@ -112,8 +113,6 @@ class loginController extends Controller
 
           );
 
-         
-      
          if ($validator->fails()) {
          $errors = $validator->errors();
          return response()->json(['error'=>$validator->errors()->all()]); 
@@ -131,17 +130,8 @@ class loginController extends Controller
        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin\customesModel  $customesModel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(customesModel $customesModel)
-    {
-        //
-    }
-
+    
+    
     /**
      * Update the specified resource in storage.
      *

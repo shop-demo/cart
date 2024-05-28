@@ -9,16 +9,19 @@ class order_detailModel extends Model
 {
     use HasFactory;
     protected $table ='order_details';
-    protected $fillable =['name','orders_id','products_id','price','sale','quantity','status'];
+    protected $fillable =['name','avatar','orders_id','products_id','price','sale','quantity','status'];
     protected $primariKey ='id';
     public $timestamps = true;
 
+	//lấy order chi tiết  thuộc 1 order
+     public function order(){
+        return $this->belongsTo(checkoutModel::class,'orders_id','id');
+     }
 
-    // Khai báo mối quan hệ: Một chi tiết đơn hàng thuộc về một đơn hàng
-    public function order()
+     //lấy chi tiết sanpham thuộc order_detailModel
+     public function product_order()
     {
-        return $this->belongsTo('App\Models\Admin\checkoutModel', 'orders_id', 'id');
+        return $this->belongsTo(productsModel::class,'products_id','id');
     }
-	
 
 }

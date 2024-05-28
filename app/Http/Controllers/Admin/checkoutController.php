@@ -35,14 +35,14 @@ class checkoutController extends Controller
 
         $validator = Validator::make($request->all(), [
               
-              'name' => 'required|min:3',
+              'name_user' => 'required|min:3',
               'email' => 'required|email',
               'mobile' => 'required',
               'address' =>'required|min:3',
               'note'=>'required'
 
               ],[
-              'name.required'   =>'Trường name không được bỏ trống',
+              'name_user.required'   =>'Trường name không được bỏ trống',
               'name.min'        => 'Độ dài name phải gồm 3 ký tự',
               'email.required'  =>'Trường emai không được bỏ trống',
               'email.email'     =>'Email phải là địa chỉ hợp lệ',
@@ -64,7 +64,7 @@ class checkoutController extends Controller
                 
                 $token_order = strtoupper(Str::random(20));
                 $order = checkoutModel::create([
-                    'name'=>$request->name,
+                    'name_user'=>$request->name_user,
                     'email'=>$request->email,
                     'mobile'=>$request->mobile,
                     'address'=>$request->address,
@@ -79,6 +79,7 @@ class checkoutController extends Controller
                     foreach($CartHelper->items as $key=>$value){
                         order_detailModel::create([
                           'name'=>$value['name'],
+                          'avatar'=>$value['avatar'],
                           'orders_id'=>$order->id,
                           'products_id'=>$key,
                           'price'=>$value['price'],
@@ -126,7 +127,7 @@ class checkoutController extends Controller
       
         $assert_order = checkoutModel::find($id);
         $order_detail = order_detailModel::where('orders_id',$id)->get()->toArray();
-        $name_khachhang = $assert_order->name;
+        $name_khachhang = $assert_order->name_user;
         $mail_khachhang = $assert_order->email;
         if($assert_order->token === $token_order){
          $assert_order->update(['status'=>1]); 
