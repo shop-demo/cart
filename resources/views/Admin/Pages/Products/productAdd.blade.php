@@ -239,6 +239,7 @@
                   <label class="col-sm-2 col-form-label fw-bold">Submit Button</label>
                   <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Thêm Mới</button>
+                    <button type="button" class="btn btn-secondary p-cancel" data-url="{{route('admin.productList')}}">Cancel</button>
                   </div>
                 </div>
               </form><!-- End General Form Elements -->
@@ -267,6 +268,24 @@
       //http://localhost/upload/sanpham/images/cookie.png
  
  </script>
+
+ <script type="text/javascript" charset="utf-8" async defer>
+  $(document).ready(function(){
+    //cancel
+    $('.p-cancel').on('click',function(ev){
+      ev.preventDefault();
+      var _url= $(this).data('url');
+      if(confirm('Bạn có chắc không !')==false){
+             alert('Bạn tiếp tục.');
+          }else{
+            window.location.href = _url;
+          }
+      
+    });
+ 
+
+  });
+</script>
 
 
 @endsection

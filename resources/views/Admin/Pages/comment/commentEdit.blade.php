@@ -66,7 +66,7 @@
               
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn btn-secondary">Cancel</button>
+                <button type="reset" class="btn btn-secondary commE" data-comm-url="{{route('admin.commentList')}}">Cancel</button>
               </div>
 
             </form><!-- Vertical Form -->
@@ -78,4 +78,24 @@
     </div>
   </section>
 </main>
+@endsection
+@section('js')
+@section('js')
+<script type="text/javascript" charset="utf-8" async defer>
+  $(document).ready(function(){
+    //cancel
+    $('.commE').on('click',function(ev){
+      ev.preventDefault();
+      var _url=$(this).data('comm-url');
+      if(confirm('Bạn có chắc sẽ rời trang không?')==false){
+             alert('Mời Bạn tiếp tục!');
+          }else{
+            window.location.href = _url;
+          }
+      
+    });
+ 
+
+  });
+</script>
 @endsection

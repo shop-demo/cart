@@ -32,7 +32,7 @@ class orderController extends Controller
         $title="Xem chi tiết đơn hàng.";
         //$img = productsModel::where()
         
-        $order_detailView= checkoutModel::find($id);
+        $order_detailView = checkoutModel::find($id);
 
         return view('Admin.Pages.Cart.order_detailView',compact('order_detailView','title'));
     }

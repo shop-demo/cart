@@ -19,11 +19,13 @@ class categoryController extends Controller
      */
     public function index()
     {
+       
         $title="Danh sách Danh mục";
         $listCategory = categoryModel::orderBy('id','DESC')->get();
         return view('Admin.Pages.Category.categoryList',compact('title','listCategory'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *

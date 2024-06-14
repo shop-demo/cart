@@ -80,7 +80,7 @@
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="reset" class="btn btn-secondary e-cancel" data-url={{route('admin.categoryList')}}>Cancel</button>
               </div>
 
             </form><!-- Vertical Form -->
@@ -92,5 +92,23 @@
     </div>
   </section>
 </main>
+@endsection
+@section('js')
+<script type="text/javascript" charset="utf-8" async defer>
+  $(document).ready(function(){
+    $('.e-cancel').on('click',function(ev){
+      ev.preventDefault();
+      var _url = $(this).data('url');
+      if(confirm('Bạn chắc rời trang này?')==false){
+             alert('Mời Bạn hãy tiếp tục');
+          }else{
+             window.location.href = _url;
+          }
 
+    });
+ 
+
+
+  });
+</script>
 @endsection

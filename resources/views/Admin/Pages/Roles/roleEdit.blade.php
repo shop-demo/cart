@@ -61,7 +61,7 @@
               
               <div class="col-lg-12 mt-2">
                 <button type="submit" class="btn btn-primary">Save</button>
-                 <a href= "{{route('admin.roleEdit',['id'=>$dataRouteEdit->id])}}" class="btn btn-secondary cancelbtn">Cancel</a>
+                 <a href= "{{route('admin.roleEdit',['id'=>$dataRouteEdit->id])}}" class="btn btn-secondary cancelbtn" data-url-role="{{route('admin.roleList')}}">Cancel</a>
               </div>
             </div><!-- col-8 -->
          </form><!-- End settings Form -->
@@ -93,15 +93,14 @@
 
       e.preventDefault();
       
-      var _url = $(this).attr('href');
+      var _url = $(this).data('url-role');
      
-      if(confirm('Rời khỏi trang ?')==false){
+      if(confirm('Bạn có chắc rời khỏi trang này ?')==false){
                 
-           window.location = _url;
+           alert('Bạn tiếp tục !');
             
        }else{
-                     
-           history.back();               
+           window.location.href = _url;                 
          }
     })
 

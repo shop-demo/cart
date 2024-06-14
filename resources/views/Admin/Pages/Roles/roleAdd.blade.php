@@ -68,7 +68,7 @@
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Thêm Vai Trò</button>
-                       <button type="submit" class="btn btn-secondary btnCancel">Cancel</button>
+                       <button type="submit" class="btn btn-secondary btnCancel" data-url-role="{{route('admin.roleList')}}">Cancel</button>
                     </div>
                   </form><!-- End settings Form -->
                 
@@ -106,14 +106,14 @@
     //cancel
     $('.btnCancel').on('click',function(e){
       e.preventDefault();
+      var _url= $(this).data('url-role');
 
-      if(confirm('bạn có chắc')==false){
+      if(confirm('bạn có chắc rời khỏi trang không')==false){
                 
-           window.location = "{{route('admin.roleAdd')}}";
+           alert('Bạn tiếp tục!');
             
        }else{
-                     
-           history.back();               
+           window.location.href = _url;            
          }
       
     });

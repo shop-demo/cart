@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\checkoutController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\commentControlle;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +53,8 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 
 	//caterory
 	Route::get('/categoryList',[categoryController::class,'index'])->name('admin.categoryList');
+
+
 	Route::get('/categoryAdd',[categoryController::class,'create'])->name('admin.categoryAdd');
 	Route::post('/categoryAdd',[categoryController::class,'store'])->name('admin.categoryPost');
 	Route::get('/categoryEdit/{id}',[categoryController::class,'show'])->name('admin.categoryEdit');
@@ -145,10 +148,12 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	Route::delete('/commentDelete/{id}',[commentControlle::class,'delete'])->name('admin.commentDelete');
 	//comm reply
 	Route::put('/commentRep/{id}',[commentControlle::class,'commRep'])->name('admin.commRep');
+	
 	//edit commRep
 	Route::get('/editRep/{id}',[commentControlle::class,'editCommRep'])->name('admin.editRep');
 	Route::put('/putRep/{id}',[commentControlle::class,'updateCommRep'])->name('admin.putRep');
 	Route::delete('/putRep/{id}',[commentControlle::class,'deleteCommRep'])->name('admin.deleteCommRep');
+	
 	//satus
 	Route::put('/commentActive/{id}',[commentControlle::class,'active'])->name('admin.commentActive');
 	Route::put('/commentNotActive/{id}',[commentControlle::class,'notActive'])->name('admin.commentNotActive');
@@ -160,15 +165,11 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 
 
 
-
-
-
 	//filemanager
 	Route::get('/file',[adminController::class,'filemanager'])->name('admin.filemanager');
 
 	//seach product
 	//Route::get('/seach',[seachController::class,'seachProduct'])->name('admin.seachProduct');
-
 
 
 });
@@ -179,8 +180,6 @@ Route::get('/error',[adminController::class,'error'])->name('error');
 Route::get('/admin',[adminController::class,'dashboard'])->name('dashboard');
 Route::post('/adminlogin',[adminController::class,'login'])->name('dashboardLogin');
 Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLogout');
-
-
 
 /*FRONTEND login logout--------
 ------------------*/
@@ -198,13 +197,12 @@ Route::group(['prefix'=>'login'], function () {
 	Route::get('/comment', [homeController::class,'loadComm'])->name('loadComm');  
 	Route::put('/comment', [homeController::class,'comment'])->name('home.comment');
 	
-
-
 	/*comment --------------------------
 	------------------------------------*/  
 
-
 });
+/*cloze FRONTEND login logout--------
+------------------*/
 
 /*Shopping-carts*/
 Route::group(['prefix'=>'cart'], function () {

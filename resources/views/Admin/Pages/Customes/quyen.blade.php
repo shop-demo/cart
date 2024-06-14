@@ -64,7 +64,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{route('admin.customeQuyen',['id'=>$dataCus->id])}}" class="btn btn-secondary cancelQuyen">cancel</a>
+            <a href="{{route('admin.customeQuyen',['id'=>$dataCus->id])}}" class="btn btn-secondary cancelQuyen" data-url-cus="{{route('admin.customeList')}}">cancel</a>
 
           </form>
         </div>
@@ -83,15 +83,15 @@
 
           e.preventDefault();
           
-          var _url = $(this).attr('href');
+          var _url = $(this).data('url-cus');
          
-          if(confirm('Rời khỏi trang ?')==false){
+          if(confirm('Bạn có chắc rời trang này không?')==false){
                     
-               window.location = _url;
+               alert('Mời bạn tiếp tục !');
                 
            }else{
                          
-               history.back();               
+               window.location.href = _url;               
              }
         })
     });//document

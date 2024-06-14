@@ -1,7 +1,7 @@
 @extends('Admin.masterLayout')
 
 @section('content')
-main>
+<main>
     <div class="container">
     	<?php 
     	//$code = isset($code) ? $code : 404;

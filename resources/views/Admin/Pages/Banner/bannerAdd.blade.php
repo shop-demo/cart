@@ -161,7 +161,8 @@
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Submit Button</label>
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Add Banner</button>
+                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                    <button type="button" class="btn btn-secondary b-cancel" data-url-banner="{{route('admin.bannerList')}}">Cancel</button>
                   </div>
                 </div>
               </form><!-- End General Form Elements -->
@@ -190,6 +191,26 @@
       //http://localhost/upload/sanpham/images/cookie.png
  
  </script>
+
+ <script type="text/javascript" charset="utf-8" async defer>
+  $(document).ready(function(){
+    //cancel
+    $('.b-cancel').on('click',function(ev){
+      ev.preventDefault();
+      var _url=$(this).data('url-banner');
+
+      if(confirm('Bạn chắc rời trang không ?')==false){
+             alert('Mời Bạn hãy tiếp tục');
+          }else{
+            window.location.href = _url;
+          }
+      
+    });
+ 
+
+  });
+</script>
+
 
 
 @endsection

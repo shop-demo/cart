@@ -66,7 +66,7 @@
               
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn btn-secondary">Cancel</button>
+                <button type="reset" class="btn btn-secondary e-cancelCus" data-url-cus="{{route('admin.customeList')}}">Cancel</button>
               </div>
 
             </form><!-- Vertical Form -->
@@ -78,4 +78,24 @@
     </div>
   </section>
 </main>
+@endsection
+@section('js')
+<script type="text/javascript" charset="utf-8" async defer>
+  $(document).ready(function(){
+    //cancel
+    $('.e-cancelCus').on('click',function(ev){
+      ev.preventDefault();
+      var _url = $(this).data('url-cus');
+
+      if(confirm('Bạn có chắc không rời trang này không ?')==false){
+             alert('Mời bạn lại tiếp tục.');
+          }else{
+            window.location.href = _url;
+          }
+      
+    });
+ 
+
+  });
+</script>
 @endsection
