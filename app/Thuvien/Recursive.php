@@ -4,6 +4,7 @@ use App\Models\Admin\categoryModel;
 use App\Models\Admin\productModel;
 use App\Models\Admin\productHotModel;
 
+
 //hàm convert không dấu
 
 			if (!function_exists('Tieu_de')) {
@@ -54,8 +55,11 @@ use App\Models\Admin\productHotModel;
 		 	$html='';
 		 	
 		 	foreach($data as $key=>$item){
+
 		 		if($item->id_cha == $id_cha){
-		 			$html .= '<li><a href="'.route('view',['slug'=>$item->code]).'">'.$item->name.'</a>';
+		 			$isActive = Request::segment(1) == $item->code ? 'active' : '';
+		 			//$isActive = (Request::segment(1) == 'page' && Request::segment(2) == $item->code) ? 'active' : '';
+		 			$html .= '<li ><a href="'.url($item->code).'" class="' . $isActive . '">'.$item->name.'</a>';
 		 			if(children($data,$item->id)){
 		 				$html.='<ul >';
 		 				$html .= menu_Dequy($data,$item->id);
@@ -63,10 +67,11 @@ use App\Models\Admin\productHotModel;
 		 			}
 
 		 			$html .= '</li>';
+		 			
 
-		 		}
+		 		} 
 		 	}
-			return $html;
+			return $html; 
 		}
 
 		
@@ -80,11 +85,7 @@ use App\Models\Admin\productHotModel;
 
 		}
 
-
-
-
-
-
-
+		
+		
 
 ?>

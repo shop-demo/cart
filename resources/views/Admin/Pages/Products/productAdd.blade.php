@@ -11,14 +11,7 @@
      
     <div class="pagetitle">
       <h2>{{$title}}</h2>
-
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
-        </ol>
-      </nav>
+      @include('Admin.Pages.Block.nav')
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
@@ -219,7 +212,7 @@
                 </fieldset>
 
                  <!-- end status --> 
-                
+                 <!-- category --> 
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Chọn Caterogy</label>
                   <div class="col-sm-10">
@@ -233,6 +226,15 @@
                        
                   </div>
                 </div>
+
+                 <!-- end category --> 
+                 <!-- tags -->
+                 <div class="row mb-4">
+                    <label for="tags" class="col-sm-2 col-form-label fw-bold">Tags</label>
+                    <div class="col-sm-10 ">
+                    <input type="text"  class="form-control" name="tags" value="">
+                    </div> 
+                </div> 
 
 
                 <div class="row mb-4">
@@ -285,6 +287,14 @@
  
 
   });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#tags').tagsinput({
+            alert(123);
+        });
+    });
 </script>
 
 

@@ -42,16 +42,17 @@ class homeController extends Controller
      
      // Kết hợp cả hai tập hợp slide lại với nhau
      $slides = $slides1->concat($slides2);
+     //get all
+     $listCategory = categoryModel::all();
 
      //sản phẩm luôn có
-
-
-     return view('welcome',compact('shopList','pages','tabs','slides'));
+    
+     return view('welcome',compact('shopList','pages','tabs','slides','listCategory'));
   }
 
     //lấy sản phẩm theo danhmuc
   public function view(Request $request,$slug){
-
+   
      //get danh mục sp theo slug
     $pageShow = categoryModel::where('code',$slug)->first();
 
@@ -65,14 +66,17 @@ class homeController extends Controller
       $query->where('id_cha', $page_id);
     })->get();
 
+
     return view('frontend.pages.showPages',compact('pageProduct','pageShow','products'));
   }
 
  
   public function product_Details(Request $request,$page,$slug){
-
+    
     //chi tiết sản phẩm
     $productDetail = productsModel::where('code',$slug)->first();
+    //sản phẩm thuộc category
+    
     
     //get sanpham cùng tabs
     $t_pro = $productDetail->tabs;

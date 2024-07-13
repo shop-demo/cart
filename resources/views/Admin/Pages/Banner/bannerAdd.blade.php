@@ -7,17 +7,12 @@
 @section('content')
 <main id="main" class="main">
     
-   
     <div class="pagetitle">
       <h2>{{$title}}</h2>
-
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
-        </ol>
-      </nav>
+      <!--nav -->
+      @include('Admin.Pages.Block.nav')
+      <!--end nav -->
+      
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">

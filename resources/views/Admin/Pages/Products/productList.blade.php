@@ -11,13 +11,7 @@
   <div class="pagetitle">
     <h2 class="fw-bold pt-3 ">{{$title}}</h2>
 
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Home</a></li>
-        <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active">Data</li>
-      </ol>
-    </nav>
+    @include('Admin.Pages.Block.nav')
   </div><!-- End Page Title -->
   <section class="section dashboard">
     <div class="row">

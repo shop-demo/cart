@@ -307,6 +307,8 @@
           });//btn logout
 
 
+         
+
 
         });
 
@@ -316,8 +318,10 @@
       <!-- end login --> 
      <!-- logout -->  
      <script src="{{url('public/frontend')}}/style/js/seach.js" type="text/javascript" charset="utf-8" async defer></script>
+
     
      @yield('js')
+
 
    </body>
 

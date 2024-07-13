@@ -9,13 +9,9 @@
 	
 	<div class="pagetitle p-2">
 		<h2 class="pt-3">{{$title}}</h2>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="">Home</a></li>
-				<li class="breadcrumb-item">Tables</li>
-				<li class="breadcrumb-item active">Data</li>
-			</ol>
-		</nav>
+		<!--nav -->
+	    @include('Admin.Pages.Block.nav')
+	    <!--end nav -->
 	</div><!-- End Page Title -->
 
 	<section class="section">

@@ -9,14 +9,12 @@
 	<main id="main" class="main">
 
 	    <div class="pagetitle">
-	      <h1>Quản trị  hệ thống</h1>
-	      <nav>
-	        <ol class="breadcrumb">
-	          <li class="breadcrumb-item"><a href="">Home</a></li>
-	          <li class="breadcrumb-item active">Dashboard</li>
-	        </ol>
-	      </nav>
-	    </div><!-- End Page Title -->
+	      <h1>Slide</h1>
+	      <!--nav -->
+        @include('Admin.Pages.Block.nav')
+        <!--end nav -->
+	    
+      </div><!-- End Page Title -->
 
 	    <section class="section dashboard">
 	      <div class="row">

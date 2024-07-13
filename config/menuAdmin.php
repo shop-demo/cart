@@ -114,8 +114,18 @@
 							]
 						],
 			
-					
+					/*about*/
+					[
+							'name'=>'About',
+							'route'=>'admin.about',
+							'items'=>[
+									['name'=>'About',
+									 'route'=>'admin.about',	
+									],
+																
 
+							]
+						],
 
 
 			];//[menureturn]

@@ -18,5 +18,18 @@ class categoryModel extends Model
     function product(){
        return $this->hasMany('App\Models\Admin\productsModel', 'category_id','id');
    }
+	
+	//danh mục cha :1con thuộc 1cha
+   public function categoryParent()
+    {
+        return $this->hasOne('App\Models\Admin\categoryModel','id','id_cha');
+    }
+   //danh mục cha :1cha có nhiều con
+    public function childCategory()
+    {
+        return $this->belongsTo('App\Models\Admin\categoryModel','id_cha','id');
+    }
+
+
 
 }

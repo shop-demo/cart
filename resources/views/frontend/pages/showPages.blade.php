@@ -1,5 +1,14 @@
 @extends('frontend.client')
+@section('css')
+<style type="text/css" media="screen">
+   .active{
+    color: #d7bb3e !important;
+   }
+   
+</style>
+@endsection
 @section('main')
+@php @endphp
 <!-- inner page banner -->
       <div id="inner_banner" class="section inner_banner_section" style="margin-top:150px;">
          <div class="container">
@@ -11,7 +20,8 @@
                            <h1 class="page-title">Shop Page</h1>
                            <ol class="breadcrumb">
                               <li><a href="{{route('home.index')}}">Home</a></li>
-                              <li class="active">{{$pageShow->name}}</li>
+                            
+                              <li ><a href="" class="{{Request::segment(1) == $pageShow->code ? 'active':''}}">{{$pageShow->name}}</a></li>
                              
                            </ol>
                         </div>

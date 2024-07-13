@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\cartController;
 use App\Http\Controllers\Admin\checkoutController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\commentControlle;
+use App\Http\Controllers\Admin\aboutController;
 
 
 /*
@@ -161,6 +162,24 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	
 	
 	/*end comment-----------------------------------------------------------
+	----------------------------------------------------------------*/
+
+	/*about-----------------------------------------------------------
+	----------------------------------------------------------------*/
+
+	Route::get('/about',[aboutController::class,'index'])->name('admin.about');
+	Route::get('/aboutAdd',[aboutController::class,'create'])->name('admin.aboutAdd');
+	Route::post('/aboutAdd',[aboutController::class,'store'])->name('admin.aboutAdd_post');
+	Route::get('/aboutEdit/{id}',[aboutController::class,'show'])->name('admin.aboutEdit');
+	Route::put('/aboutEdit/{id}',[aboutController::class,'edit'])->name('admin.aboutEdit_save');
+	Route::delete('/aboutDelete/{id}',[aboutController::class,'delete'])->name('admin.aboutDelete');
+
+	//active status
+
+	Route::put('/aboutAtive/{id}',[aboutController::class,'active'])->name('admin.aboutAtive');
+	Route::put('/aboutNotAtive/{id}',[aboutController::class,'not_active'])->name('admin.aboutNotAtive');
+
+	/*end about-----------------------------------------------------------
 	----------------------------------------------------------------*/
 
 

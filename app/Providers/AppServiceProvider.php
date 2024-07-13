@@ -11,6 +11,7 @@ use Illuminate\Pagination\Paginator;
 use App\Thuvien\CartHelper;
 use App\Models\Admin\commentModel;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -44,5 +45,13 @@ class AppServiceProvider extends ServiceProvider
                 ]);
 
         });
+    
+
+
+
     }
+
+
+
+
 }

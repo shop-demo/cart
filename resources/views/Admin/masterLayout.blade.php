@@ -27,12 +27,15 @@
   <link href="{{url('public/Admin')}}/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="{{url('public/Admin')}}/vendor/simple-datatables/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-
+ <!-- Template Main CSS tags input-->
+ 
   <!-- Template Main CSS File -->
   <link href="{{url('public/Admin')}}/css/style.css" rel="stylesheet">
   <!-- ckeditor -->
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
+  
+   
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -206,6 +209,7 @@
   <script src="{{url('public/Admin')}}/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="{{url('public/Admin')}}/vendor/tinymce/tinymce.min.js"></script>
   <script src="{{url('public/Admin')}}/vendor/php-email-form/validate.js"></script>
+ 
 
   <!-- Template Main JS File -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -240,6 +244,9 @@
         });//document
 
   </script>
+ <!-- Bootstrap Tags Input JS -->
+
+  
 
 </body>
 

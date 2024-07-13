@@ -1,7 +1,39 @@
 @extends('frontend.client')
 @section('css')
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
- 
+ <style type="text/css" media="screen">
+   .p-breadcrumb{
+    width: 100%;
+    height:auto;
+    border-bottom:  2px solid #c4c4c4;
+    padding: 1.2rem 0;
+   }
+   .p-name_heading{
+    margin-top: 1.5rem;
+   }
+  .pro-breadcrumb_item>a{
+    
+    padding-right: 0.8rem;
+
+   }
+   .pro-breadcrumb_item{
+    color: #333 !important;
+    font-size: 1rem;
+   }
+   .pro-breadcrumb_item>a:hover{
+    font-weight: 600;
+    color: #d7bb3e !important;
+   }
+   .active{
+    color: #d7bb3e !important;
+   }
+   .product_detail .tab_bar_section ul.nav.nav-tabs li a.active {
+    background: #d7bb3e;
+    color: #fff !important;
+   }
+   
+
+ </style>
 @endsection 
 @section('main')
 
@@ -14,10 +46,15 @@
                    <div class="title-holder">
                       <div class="title-holder-cell text-left">
                          <h1 class="page-title">Shop Detail</h1>
-                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.index')}}">Home</a></li>
-                            <li class="active">{{$productDetail->name}}</li>
-                         </ol>
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('home.index')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('view',['slug'=>$productDetail->pro_category->code])}}">{{$productDetail->pro_category->name}}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" style="color: #fff;"><a href="" 
+                            class="{{Request::segment(2)==$productDetail->code ?'active':''}}" >{{$productDetail->name}}</a></li>
+                          </ol>
+                        </nav>
+
                       </div>
                    </div>
                 </div>
@@ -84,7 +121,16 @@
                     
                    <!-- product_detail -->
                    <div class="col-lg-4 col-md-12 product_detail_side detail_style1">
-                      <div class="product-heading">
+                   <!-- breadcrumb_item -->
+                   <div class="p-breadcrumb">
+                     <ul class="d-inline-flex">
+                       <li class="pro-breadcrumb_item"><a href="{{route('home.index')}}">Home</a></li>
+                       <li class="pro-breadcrumb_item"><a href="{{route('view',['slug'=>$productDetail->pro_category->code])}}">{{$productDetail->pro_category->name}}</a></li>
+                       <li class="pro-breadcrumb_item"><a href="" class="{{Request::segment(2) == $productDetail->code ? 'active':''}}">{{$productDetail->name}}</a></li>
+                    </ul>
+                   </div>
+                    <!-- end breadcrumb_item -->
+                      <div class="product-heading p-name_heading">
                          <h2>{{$productDetail->name}}</h2>
                       </div>
                       <div class="product-detail-side">
@@ -224,7 +270,7 @@
                    <div class="col-md-12">
                       <div class="full">
                          <div class="main_heading text_align_left" style="margin-bottom: 25px;">
-                            <h3>Sản phẩm cùng loại</h3>
+                            <h3>Bạn cũng có thể thích</h3>
                          </div>
                       </div>
                    </div>

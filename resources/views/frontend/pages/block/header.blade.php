@@ -30,8 +30,12 @@
                </div>
             </div>
          </div>
-         <!-- end header top -->
- 
+         <!-- end header top Request::is($route) activeMenu(Request::segment(1).'/') route()->getName()-->
+       
+       @php 
+       
+
+       @endphp
          <!-- header bottom -->
          <div class="header_bottom" style="background: #f1f1f1;">
             <div class="container">
@@ -42,46 +46,38 @@
                      <!-- logo end -->
                   </div>
                   <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                
+                    
                      <!-- menu start -->
                      <div class="menu_side">
                         <div id="navbar_menu">
+
                            <ul class="first-ul">
                               <li>
-                                 <a class="active" href="{{route('home.index')}}">Home</a>
+                                 <a  class="{{ Request::segment(1).'/'=='/' ? 'active' : ''}}" href="{{route('home.index')}}">Home</a>
                               </li>
-                              <li>
-                                 <a href="">Pages</a>
-                                 <ul>
-                                    @foreach($pages as $key=>$page)
-                                    <li><a href="{{route('view',['slug'=>$page->code])}}">{{$page->name}}</a></li>
-                                    @endforeach
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="">Shop</a>
-                                 <ul>
-                                    @foreach($shopList as $key=>$shop)
-                                    <li><a href="{{route('view',['slug'=>$shop->code])}}">{{$shop->name}}</a></li>
-                                    @endforeach
-                                 </ul>
-                              </li>
-                              <li>
+
+                               {!!  menu_Dequy($listCategory,$id_cha=0) !!}
+                              <!-- giỏ hang-->
+                               <li>
                                  @if($cartShop)
-                                 <a href="">Giỏ hàng({{$cartShop->total_quantity}})</a>
+                                 <a href="" class="{{ Request::segment(1)=='cart'  ? 'active' : ''}}">Giỏ hàng({{$cartShop->total_quantity}})</a>
                                  @else
-                                 <a href="">Giỏ hàng(0)</a>
+                                 <a href="" class="{{ Request::segment(1)=='cart'  ? 'active' : ''}}" >Giỏ hàng(0)</a>
                                  @endif
                                  <ul>
-                                    <li><a href="{{route('cart.index')}}" data-product-url=" {{route('cart.index')}}">Danh sách</a></li>
+                                    <li ><a  href="{{route('cart.index')}}" data-product-url=" {{route('cart.index')}}" >Danh sách</a></li>
                                  </ul>
                               </li>
+                             
+                              <!-- đăng nhập-->
                               <li>
                                  @if(auth()->guard('cusFrontend')->check())
-                                    <a href="" style="text-transform: capitalize;">Chào bạn:{{auth()->guard('cusFrontend')->user()->name}}</a>
+                                    <a  href="" style="text-transform: capitalize;">Chào bạn:{{auth()->guard('cusFrontend')->user()->name}}</a>
                                  @else
-                                    <a href="{{route('dang-nhap')}}" class="btn-link login_btn">Đăng nhập</a>
+                                    <a href="{{route('dang-nhap')}}" class="btn-link login_btn {{ Request::segment(1)=='login'? 'active' : ''}}" >Đăng nhập</a>
                                  @endif
-                                
+                                 
                                  <ul>
                                    @if(auth()->guard('cusFrontend')->check())
                                     <li>
@@ -90,13 +86,10 @@
                                     <a href="{{route('logoutSubmit')}}" class="btn-link logout_btn">Logout</a>
                                     </form>
                                     </li>
-                                    
                                    @endif
                                     
                                  </ul>
-                              </li>                                    
-                             
-                              <li><a href="">Contact</a></li>
+                              </li>      
                            </ul>
                         </div>
                         <div class="search_icon">
@@ -106,6 +99,7 @@
                         </div>
                      </div>
                      <!-- menu end -->
+                     <!-- -->
                   </div>
                </div>
             </div>
