@@ -146,7 +146,6 @@
   //action status
      $('.notActiveAbout').on('click',function(ev){
       ev.preventDefault();
-
       var _href = $(this).attr('href');
       $('#actionAbout').attr('action',_href);
           if(confirm('Bạn có chắc thay đổi trang thái status')==false){

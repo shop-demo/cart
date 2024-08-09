@@ -125,7 +125,20 @@
 																
 
 							]
-						],
+					],
+
+					/*setting*/
+					[
+							'name'=>'Setting',
+							'route'=>'admin.setting',
+							'items'=>[
+									['name'=>'List Setting',
+									 'route'=>'admin.setting',	
+									],
+																
+
+							]
+					],
 
 
 			];//[menureturn]

@@ -17,8 +17,7 @@ use App\Http\Controllers\Admin\checkoutController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\commentControlle;
 use App\Http\Controllers\Admin\aboutController;
-
-
+use App\Http\Controllers\Admin\settingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -158,8 +157,6 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	//satus
 	Route::put('/commentActive/{id}',[commentControlle::class,'active'])->name('admin.commentActive');
 	Route::put('/commentNotActive/{id}',[commentControlle::class,'notActive'])->name('admin.commentNotActive');
-	//satus
-	
 	
 	/*end comment-----------------------------------------------------------
 	----------------------------------------------------------------*/
@@ -181,6 +178,21 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 
 	/*end about-----------------------------------------------------------
 	----------------------------------------------------------------*/
+	/*Settings*/
+	Route::get('/setting',[settingController::class,'index'])->name('admin.setting');
+	Route::get('/settingAdd',[settingController::class,'create'])->name('admin.settingAdd');
+	Route::put('/settingAPut',[settingController::class,'store'])->name('admin.settingPut');
+	Route::get('/settingEdit/{id}',[settingController::class,'show'])->name('admin.settingEdit');
+	Route::put('/settingPutE/{id}',[settingController::class,'edit'])->name('admin.settingPutE');
+	Route::delete('/settingDelete/{id}',[settingController::class,'delete'])->name('admin.settingDelete');
+	Route::any('/settingAllDelete',[settingController::class,'destroy'])->name('admin.settingAllDelete');
+
+
+	Route::put('/SettingAtive/{id}',[settingController::class,'activeS'])->name('admin.SettingAtive');
+	Route::put('/SettingNotAtive/{id}',[settingController::class,'not_activeS'])->name('admin.SettingNotAtive');
+	
+	/*Settings active*/
+	/*end settings*/
 
 
 
@@ -203,9 +215,9 @@ Route::post('/adminLogOut',[adminController::class,'logout'])->name('dashboardLo
 /*FRONTEND login logout--------
 ------------------*/
 Route::group(['prefix'=>'login'], function () {
+	
 	Route::get('/', [loginController::class,'login'])->name('dang-nhap');
 	
-
 	Route::post('/loginSubmit', [loginController::class,'loginSubmit'])->name('loginSubmit'); 
 	Route::post('/logout', [loginController::class,'logout'])->name('logoutSubmit'); 
 	//đăng ký

@@ -158,8 +158,8 @@
                          </form>
                        <!--endform ADD rating -->
                        @else
-                        <span class="rating" id="rateYo1" style="display: inline-block; "></span>
-                       <span>review:{{$ratingSP}}<p class="fs-1">(Bạn cần đăng nhập và mua sản phẩm để đánh giá)</p></span>
+                        <span class="rating" id="rateYo1" style="display: block; width: 100%; height:auto; padding: 0; padding-top:1rem;"></span>
+                       <span style="display:block;padding-top:0.5rem;">review:{{$ratingSP}}</span>
                        @endif
                        <!-- end add rating -->
                        </div>
@@ -226,7 +226,7 @@
                                      <!--reviews user-->
                                      <div class="commant-text row" id="comm_text" style=" border-bottom:none;">
                                       <!--reviews user-->
-                                     @include('frontend.pages.comment',['commProduct'=>$commProduct]);
+                                     @include('frontend.pages.comment',['commProduct'=>$commProduct])
                                       <!--end reviews comm -->
                                     </div>
                                      <!--commment -->
@@ -252,7 +252,9 @@
                                               </div>
                                            </div>
                                           @else
+                                          <div style="width: 30%; height: auto; display:inline-block; float: right; font-style: italic;">
                                           <span>Bạn cần đăng nhập và mua sản phẩm trước khi đánh giá sản phẩm.</span>
+                                          </div>
                                           @endif
                                         </div>
                                      </div>
@@ -378,9 +380,10 @@
     }).on("rateyo.set", function (e, data) {
      
       Swal.fire({
-                  title: "Cảnh báo",
+                  
                   text: "Bạn cần đăng nhập và mua sản phẩm này trước khi đánh giá",
-                  icon: "error"
+                  icon: "info"
+                 
                  }).then((result) => {
                         // Nếu người dùng nhấn vào nút xác nhận, thực hiện tải lại trang
                         if (result.isConfirmed) {

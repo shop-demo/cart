@@ -5,7 +5,7 @@
                <div class="col-md-12">
                   <div class="full">
                      <div class="main_heading text_align_center">
-                        <h2><span>Why choose us</span></h2>
+                        <h2><span>Tại sao lại chọn chúng tôi</span></h2>
                      </div>
                   </div>
                </div>

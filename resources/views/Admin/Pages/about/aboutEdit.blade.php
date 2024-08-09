@@ -30,7 +30,7 @@
 
               <!-- General Form Elements -->
               <form action="{{ route('admin.aboutEdit_save',['id'=>$data->id]) }}" method="POST">
-                  @csrf @method('PUT');
+                  @csrf @method('PUT')
                
                 <div class="row mb-4">
                   
@@ -157,19 +157,19 @@
 
  <script type="text/javascript" charset="utf-8" async defer>
   $(document).ready(function(){
-    /*cancel
-    $('.b-cancel').on('click',function(ev){
+    /*cancel */
+    $('.ab-cancel').on('click',function(ev){
       ev.preventDefault();
       var _url=$(this).data('url-banner');
-
       if(confirm('Bạn chắc rời trang không ?')==false){
              alert('Mời Bạn hãy tiếp tục');
           }else{
             window.location.href = _url;
           }
+     
       
     });
- */
+
 
   });
 </script>

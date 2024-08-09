@@ -23,12 +23,12 @@ class homeController extends Controller
 
   public function index(Request $request){
 
-      	//category
+     //category
      $shopList = categoryModel::where('id_cha','<>','0')->get();
 
      $pages = categoryModel::where('id_cha',0)->get();
 
-      	//button tabs
+     //button tabs
      $tabs = tabsModel::where('status',1)->get();
 
      //số lượng imge trong data
@@ -42,10 +42,10 @@ class homeController extends Controller
      
      // Kết hợp cả hai tập hợp slide lại với nhau
      $slides = $slides1->concat($slides2);
+    
      //get all
      $listCategory = categoryModel::all();
 
-     //sản phẩm luôn có
     
      return view('welcome',compact('shopList','pages','tabs','slides','listCategory'));
   }
@@ -53,7 +53,7 @@ class homeController extends Controller
     //lấy sản phẩm theo danhmuc
   public function view(Request $request,$slug){
    
-     //get danh mục sp theo slug
+   //get danh mục sp theo slug
     $pageShow = categoryModel::where('code',$slug)->first();
 
     $page_id = $pageShow->id;
@@ -65,7 +65,6 @@ class homeController extends Controller
     $products = productsModel::whereHas('pro_category', function($query) use ($page_id) {
       $query->where('id_cha', $page_id);
     })->get();
-
 
     return view('frontend.pages.showPages',compact('pageProduct','pageShow','products'));
   }
