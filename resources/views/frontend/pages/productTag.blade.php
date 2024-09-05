@@ -8,7 +8,7 @@
 </style>
 @endsection
 @section('main')
-@php  @endphp
+@php @endphp
 <!-- inner page banner -->
       <div id="inner_banner" class="section inner_banner_section" style="margin-top:150px;">
          <div class="container">
@@ -17,11 +17,11 @@
                   <div class="full">
                      <div class="title-holder">
                         <div class="title-holder-cell text-left">
-                           <h1 class="page-title">Shop Page</h1>
+                           <h1 class="page-title"></h1>
                            <ol class="breadcrumb">
                               <li><a href="{{route('home.index')}}">Home</a></li>
                             
-                              <li ><a href="" class="{{Request::segment(1) == $pageShow->code ? 'active':''}}">{{$pageShow->name}}</a></li>
+                              <li ><a href="" class="{{-- Request::segment(1) == $pageShow->code ? 'active':''--}}">{{--$pageShow->name --}}</a></li>
                              
                            </ol>
                         </div>
@@ -42,17 +42,18 @@
            @include('frontend.pages.block.mgs')
            @endif
            <!-- end thong bao --> 
-            <div class="row">
+             <div class="row">
                <div class="col-md-12">
                   <div class="row">
-                  @if($pageProduct->count()>0)
-                  @foreach($pageProduct as $key=>$item)
+                  @if($data_tag->count()>0)
+                  @foreach($data_tag as $key=>$item)
+                
                      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                         <div class="product_list">
                            <div class="product_img p-img"><img class="img-responsive" src="{{url('public/uploads')}}/Products/{{$item->avatar}}" alt="" ></div>
                            <div class="product_detail_btm p-productDetail" style="background: #f8f9fa;">
                               <div class="center">
-                                 <h4 class="p-name text-p"><a href="{{route('product_Details',['page'=>$pageShow->code,'slug'=>$item->code])}}" >{{$item->name}}</a></h4>
+                                 <h4 class="p-name text-p"><a href="{{route('product_Details',['page'=>$item->pro_category->code,'slug'=>$item->code])}}" >{{$item->name}}</a></h4>
                               </div>
                               <div class="starratin s-star">
                                  <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
@@ -80,7 +81,7 @@
                            </div>
                         </div>
                      </div>
-                 	   @endforeach
+                     @endforeach
                  
                      @elseif($products->count()>0)  <!--  page products - danhmuc:id_cha=id -->
                      @foreach($products as $key=>$val)
@@ -126,6 +127,7 @@
                   </div>
                </div>
             </div>
+          
          </div>
       </div>
       <!-- end section -->

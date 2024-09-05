@@ -69,14 +69,7 @@
                   @enderror
                 </div>
               @else
-                <div class="col-12">
-                  <label for="inputValue" class="form-label fw-bold">Value</label>
-                   <input type="hidden" class="form-control" name="valueId" value="{{ $settingE->id}}" >
-                  <input type="text" class="form-control" id="inputValue" name="value" value="{{$settingE->value ?? old('value')}}" placeholder="Nhập value">
-                  @error('value')
-                    <p>{{ $message}}</p>
-                  @enderror
-                </div>
+                
               @endif
               <div class="col-12">
                 <label for="inputAddress" class="form-label fw-bold">Status</label>

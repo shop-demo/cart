@@ -66,6 +66,7 @@ class homeController extends Controller
       $query->where('id_cha', $page_id);
     })->get();
 
+
     return view('frontend.pages.showPages',compact('pageProduct','pageShow','products'));
   }
 
@@ -99,14 +100,38 @@ class homeController extends Controller
 
   //seach
  
-  public function seach(Request $request){
-    
-    $data_seach = productsModel::seach()->get();
-    
-    return view('frontend.pages.block.listSeach',compact('data_seach'));
-   
+  public function search(Request $request)
+  {
+   /* 
+    if(request('key')){
+     
+      $data_search = productsModel::search()->get();
+      
+      return view('frontend.pages.block.listSeach', compact('data_search'));
+      }
+    */
+
+      if ($request->has('key')) {
+        $data_search = productsModel::where('name', 'LIKE', '%' . $request->key . '%')->get();
+
+        if ($data_search->isEmpty()) {
+            return response()->json([
+                'status' => 'not_found',
+                'message' => 'Không tìm thấy sản phẩm nào'
+            ]);
+        }
+
+        return view('frontend.pages.block.listSeach', compact('data_search'));
+        
+        } else {
+            return response()->json([
+                'status' => 'empty_query',
+                'message' => 'Search query is empty.'
+            ]);
+        }
   }
 
+  
   //rating
   public function rating(Request $request){
   
@@ -178,9 +203,24 @@ class homeController extends Controller
     return view('frontend.pages.comment',compact('commProduct'));
   }
 
+//tag
+  public function tagProduct(Request $request){
+    
+    //lấy sản phẩm theo danh mục sản phẩm
+   // $pageProduct = categoryModel::where('code',$slug)->first()->product;
+   
+    $keyTag = $request->tag;
+    
+    if($keyTag){
+      
+      $data_tag = productsModel::where('name', 'LIKE', '%' .$keyTag . '%')->get();
+     
 
-
-
-
+      return view('frontend.pages.productTag',compact('data_tag'));
+    }
+   
+    
+  }
+ 
 
 }

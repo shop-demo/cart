@@ -82,6 +82,10 @@ Route::group(['prefix'=>'admin','middleware'=>'customers'], function () {
 	Route::put('/activeProduct/{id}',[activeController::class,'activeProduct'])->name('admin.activeProduct');
 	Route::put('/notActiveProduct/{id}',[activeController::class,'notActiveProduct'])->name('admin.notActiveProduct');
 
+	//tag pro
+	
+	//end product
+
 	//customers
 	Route::get('/customeList',[customesController::class,'index'])->name('admin.customeList');
 	Route::get('/customeAdd',[customesController::class,'create'])->name('admin.customeAdd');
@@ -251,8 +255,10 @@ Route::group(['prefix'=>'order'], function () {
 });
 
 //seach
-Route::get('/seach', [homeController::class,'seach'])->name('home.seach');
+Route::get('/seach', [homeController::class,'search'])->name('home.seach');
 Route::post('/rating',[homeController::class,'rating'])->name('home.rating');   
 Route::get('/', [homeController::class,'index'])->name('home.index');
 Route::get('{slug}', [homeController::class,'view'])->name('view');
+Route::get('/tag/{tag}', [homeController::class,'tagProduct'])->name('productTag');
 Route::get('{page}/{slug}', [homeController::class,'product_Details'])->name('product_Details'); 
+

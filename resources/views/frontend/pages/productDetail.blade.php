@@ -31,6 +31,13 @@
     background: #d7bb3e;
     color: #fff !important;
    }
+   .tag:hover .tag_a{
+    color: green;
+    background: #f4f4f4;
+    padding: 0.3rem;
+   
+
+   }
    
 
  </style>
@@ -63,9 +70,7 @@
        </div>
     </div>
     <!-- end inner page banner -->
-    @php 
-    
-    @endphp
+    @php @endphp
     <!-- section -->
     <p id="html"></p>
     <div class="section padding_layout_1 product_detail">
@@ -164,7 +169,7 @@
                        <!-- end add rating -->
                        </div>
                       <!-- ADD CART -->
-                      <div class="detail-contant">
+                      <div class="detail-contant" style="border-bottom: 1px solid #f4f4f4; margin-bottom: 1rem;">
                          <p>{{$productDetail->description}}<br>
                             <span class="stock">Số lượng: {{$productDetail->quantity}}</span> 
                          </p>
@@ -179,6 +184,29 @@
                          </form>
                         
                       </div>
+                      <!--tag pro -->
+                      <div class="share-post"  style="background: none; border-bottom: 1px solid #f4f4f4; margin-bottom:1rem;">
+                         <a href="#" class="share-text"><i class="fa fa-tag"></i></a>
+                         @php 
+
+                         $tagPro = explode(',',$productDetail->product_tag);
+                         @endphp
+                       
+                         <ul class="social_icons tag">
+                          @foreach($tagPro as $key=>$value)
+                          @php $strTag = Str::slug($value);
+                                $tag =  str_replace('', '-', $strTag);
+                               
+                          @endphp
+                            <li>
+                            @if($tag)
+                            <a href="{{route('productTag',['tag'=>$tag])}}" class="tag_a">#{{$value}}</a>
+                            @endif
+                            </li>
+                         @endforeach
+                         </ul>
+                      </div>
+                      <!--end tag pro -->
                        <!--end ADD CART -->
                       <div class="share-post">
                          <a href="#" class="share-text">Share</a>

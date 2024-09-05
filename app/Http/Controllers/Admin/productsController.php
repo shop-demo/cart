@@ -22,6 +22,7 @@ class productsController extends Controller
     {
         $title="Danh sách Sản phẩm";
         $dataProduct = productsModel::orderBy('id','DESC')->paginate(10);
+        
        return view('Admin.Pages.Products.productList',compact('title','dataProduct'));
     }
 
@@ -58,6 +59,7 @@ class productsController extends Controller
         $insetProducts->sale            = $request->sale;
         $insetProducts->quantity        = $request->quantity;
         $insetProducts->category_id     = $request->category_id;
+        $insetProducts->product_tag     = $request->product_tag ? $request->product_tag :"";
         $insetProducts->status          = $request->status;
         
         $insetProducts->save();
@@ -102,6 +104,7 @@ class productsController extends Controller
         $upProducts->quantity        = $request->quantity;
        
         $upProducts->category_id = $request->category_id;
+        $upProducts->product_tag = $request->product_tag ? $request->product_tag : "";
         $upProducts->status = $request->status;
         $upProducts->save();
 

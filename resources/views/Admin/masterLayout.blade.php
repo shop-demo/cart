@@ -31,19 +31,12 @@
  
   <!-- Template Main CSS File -->
   <link href="{{url('public/Admin')}}/css/style.css" rel="stylesheet">
+  <!-- tag input -->
+  <link href="{{url('public/Admin')}}/css/bootstrap-tagsinput.css" rel="stylesheet">
   <!-- ckeditor -->
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
-  
-   
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+@yield('css')
 </head>
 
 <body>
@@ -245,7 +238,7 @@
 
   </script>
  <!-- Bootstrap Tags Input JS -->
-
+<script src="{{url('public/Admin')}}/js/bootstrap-tagsinput.js"></script>
   
 
 </body>

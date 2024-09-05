@@ -9,7 +9,7 @@ class productsModel extends Model
 {
     use HasFactory;//id`, `name`, `code`, `avatar`, `album_image`, `price`, `sale`, `description`, `product_details`, `category_id`, `created_at`, `updated_at`, `product_new`, `quantity`, `ban_chay_nhat`, `gia_tot`, `status`
     protected $table ='products';
-    protected $fillable =['name','code','avatar','album_image','price','sale','description','product_details','category_id','created_at','updated_at','quantity','status'];
+    protected $fillable =['name','code','avatar','album_image','price','sale','description','product_details','category_id','product_tag','created_at','updated_at','quantity','status'];
 
     protected $primariKey ='id';
     
@@ -26,15 +26,15 @@ class productsModel extends Model
      }
 
      //seach
-      public function scopeSeach($query){
-       
-        $key = request('key');
-        if($key){
-             $query->where('name','like','%'.$key.'%')->where('status', 1);
-        }
-        return $query;
-
-    } 
+      public function scopeSearch($query)
+      {
+          $key = request('key');
+          if ($key) {
+              $query->where('name', 'like', '%' . $key . '%')->where('status', 1);
+          }
+          
+          return $query;
+      }
     //1comment thuôc 1 sản phẩm
     public function commPro(){
       return $this->hasMany('App\Models\Admin\commentModel','product_id','id');

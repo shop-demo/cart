@@ -1,8 +1,12 @@
 @extends('admin.masterLayout')
 @section('css')
-  <style>
-
-  </style>
+ <style type="text/css" media="screen">
+   span.tag.label.label-info{
+    color: #333;
+    background:#f4f4f4;
+   }
+  
+ </style>
 @endsection
 @section('content')
 <main id="main" class="main">
@@ -228,11 +232,11 @@
                 </div>
 
                  <!-- end category --> 
-                 <!-- tags -->
+                 <!-- tag -->
                  <div class="row mb-4">
-                    <label for="tags" class="col-sm-2 col-form-label fw-bold">Tags</label>
+                    <label for="tag" class="col-sm-2 col-form-label fw-bold">Tag</label>
                     <div class="col-sm-10 ">
-                    <input type="text"  class="form-control" name="tags" value="">
+                    <input type="text"  class="form-control " name="product_tag" value="" data-role="tagsinput">
                     </div> 
                 </div> 
 
@@ -290,6 +294,7 @@
 </script>
 
 <script>
+
     $(document).ready(function() {
         $('#tags').tagsinput({
             alert(123);

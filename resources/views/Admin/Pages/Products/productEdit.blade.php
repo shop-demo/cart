@@ -1,7 +1,11 @@
 @extends('admin.masterLayout')
 @section('css')
   <style>
-
+    span.tag.label.label-info{
+    color: #333;
+    background:#f4f4f4;
+   }
+  
   </style>
 @endsection
 @section('content')
@@ -232,6 +236,13 @@
                     </select>
                   </div>
                 </div>
+                <!-- tag -->
+                 <div class="row mb-4">
+                    <label for="tag" class="col-sm-2 col-form-label fw-bold">Tag</label>
+                    <div class="col-sm-10 ">
+                    <input type="text"  class="form-control " name="product_tag" value="{{$dataProduct->product_tag}}" data-role="tagsinput">
+                    </div> 
+                </div> 
 
                 <div class="row mb-4">
                   <label class="col-sm-2 col-form-label fw-bold">Submit Button</label>
